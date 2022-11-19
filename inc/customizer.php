@@ -5894,7 +5894,7 @@ function roach_customize_register($wp_customize)
     $wp_customize->add_control("roach_show_social_buttons_bottom", [
         "type" => "checkbox",
         "section" => "roach_share_social",
-        "label" => __("Bottom mobile only", "roach"),
+        "label" => __("Bottom (mobile only)", "roach"),
     ]);
 
     $wp_customize->add_setting("roach_show_facebook", [
