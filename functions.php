@@ -188,7 +188,7 @@ endif; /*
 add_action("wp_head", "roach_head_code", 20);
 function roach_head_code()
 {
-    $head_code = base64_decode(get_theme_mod("roach_code_analytics"));
+    $head_code = get_theme_mod("roach_code_analytics");
     if ($head_code):
         echo $head_code;
     endif;
@@ -196,7 +196,7 @@ function roach_head_code()
 add_action("wp_body_open", "roach_body_code");
 function roach_body_code()
 {
-    $body_code = base64_decode(get_theme_mod("roach_body_code"));
+    $body_code = get_theme_mod("roach_body_code");
     if ($body_code):
         echo $body_code;
     endif;
@@ -204,7 +204,7 @@ function roach_body_code()
 add_action("wp_footer", "roach_footer_code", 20);
 function roach_footer_code()
 {
-    $footer_code = base64_decode(get_theme_mod("roach_footer_code"));
+    $footer_code = get_theme_mod("roach_footer_code");
     if ($footer_code):
         echo $footer_code;
     endif;
@@ -1121,7 +1121,7 @@ add_action("admin_post_clean_cache_roach", "do_admin_post_clean_cache_roach");
      * Single and Page before content
      */
     if ($place == 1 && $show_ads && !$hide_ads) {
-        $ads_before = base64_decode(get_theme_mod("roach_ads_before"));
+        $ads_before = get_theme_mod("roach_ads_before");
         if ($ads_before):
             $ads_before_cat = get_theme_mod("roach_ads_before_cat");
             if (in_array($ads_before_cat, $cats) || !$ads_before_cat):
@@ -1171,7 +1171,7 @@ add_action("admin_post_clean_cache_roach", "do_admin_post_clean_cache_roach");
      * Single and Page after content
      */
     if ($place == 2 && $show_ads && !$hide_ads) {
-        $ads_after = base64_decode(get_theme_mod("roach_ads_after"));
+        $ads_after = get_theme_mod("roach_ads_after");
 
         if ($ads_after):
             $ads_after_cat = get_theme_mod("roach_ads_after_cat");
@@ -1222,9 +1222,7 @@ add_action("admin_post_clean_cache_roach", "do_admin_post_clean_cache_roach");
     /*
      * Sidebar before
      */ if ($place == 3 && $show_ads && !$hide_ads) {
-        $ads_before_sidebar = base64_decode(
-            get_theme_mod("roach_ads_before_sidebar")
-        );
+        $ads_before_sidebar = get_theme_mod("roach_ads_before_sidebar");
         if ($ads_before_sidebar):
             $ads_before_sidebar_cat = get_theme_mod(
                 "roach_ads_before_sidebar_cat"
@@ -1281,9 +1279,7 @@ add_action("admin_post_clean_cache_roach", "do_admin_post_clean_cache_roach");
     /*
      * Sidebar after
      */ if ($place == 4 && $show_ads && !$hide_ads) {
-        $ads_after_sidebar = base64_decode(
-            get_theme_mod("roach_ads_after_sidebar")
-        );
+        $ads_after_sidebar = get_theme_mod("roach_ads_after_sidebar");
         if ($ads_after_sidebar):
             $ads_after_sidebar_cat = get_theme_mod(
                 "roach_ads_after_sidebar_cat"
@@ -1334,7 +1330,7 @@ add_action("admin_post_clean_cache_roach", "do_admin_post_clean_cache_roach");
     /*
      * After header
      */ if ($place == 5 && $show_ads && !$hide_ads) {
-        $ads_header = base64_decode(get_theme_mod("roach_ads_header"));
+        $ads_header = get_theme_mod("roach_ads_header");
         if ($ads_header):
             $ads_header_cat = get_theme_mod("roach_ads_header_cat");
             if (in_array($ads_header_cat, $cats) || !$ads_header_cat):
@@ -1381,9 +1377,7 @@ add_action("admin_post_clean_cache_roach", "do_admin_post_clean_cache_roach");
      * Single and Page before featured image
      */
     if ($place == 6 && $show_ads && !$hide_ads) {
-        $ads_before_image = base64_decode(
-            get_theme_mod("roach_ads_before_image")
-        );
+        $ads_before_image = get_theme_mod("roach_ads_before_image");
         if ($ads_before_image):
             $ads_before_image_cat = get_theme_mod("roach_ads_before_image_cat");
             if (
@@ -1669,11 +1663,11 @@ function roach_show_ads_loop($count)
 {
     $show_ads = get_theme_mod("roach_show_ads");
     if ($show_ads) {
-        $ads_loop_1 = base64_decode(get_theme_mod("roach_ads_loop_1"));
-        $ads_loop_2 = base64_decode(get_theme_mod("roach_ads_loop_2"));
-        $ads_loop_3 = base64_decode(get_theme_mod("roach_ads_loop_3"));
-        $ads_loop_4 = base64_decode(get_theme_mod("roach_ads_loop_4"));
-        $ads_loop_5 = base64_decode(get_theme_mod("roach_ads_loop_5"));
+        $ads_loop_1 = get_theme_mod("roach_ads_loop_1");
+        $ads_loop_2 = get_theme_mod("roach_ads_loop_2");
+        $ads_loop_3 = get_theme_mod("roach_ads_loop_3");
+        $ads_loop_4 = get_theme_mod("roach_ads_loop_4");
+        $ads_loop_5 = get_theme_mod("roach_ads_loop_5");
         $columns = get_theme_mod("roach_columns");
         if (!$columns) {
             $columns = 3;

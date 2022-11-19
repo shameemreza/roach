@@ -23,12 +23,12 @@ function roach_sanitize_select($input, $setting)
 
 function roach_sanitize_js_code($input)
 {
-    return base64_encode($input);
+    return $input;
 }
 
 function roach_escape_js_output($input)
 {
-    return esc_textarea(base64_decode($input));
+    return esc_textarea($input);
 }
 
 if (class_exists("WP_Customize_Control")) {

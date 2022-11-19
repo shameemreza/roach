@@ -13,17 +13,17 @@ function add_ads($content)
 
   if (($show_ads) && (!$hide_ads)) :
 
-    $ads1     =   base64_decode(get_theme_mod('roach_ads_1'));
-    $ads2     =   base64_decode(get_theme_mod('roach_ads_2'));
-    $ads3     =   base64_decode(get_theme_mod('roach_ads_3'));
-    $ads4     =   base64_decode(get_theme_mod('roach_ads_4'));
-    $ads5     =   base64_decode(get_theme_mod('roach_ads_5'));
-    $ads6     =   base64_decode(get_theme_mod('roach_ads_6'));
-    $ads7     =   base64_decode(get_theme_mod('roach_ads_7'));
-    $ads8     =   base64_decode(get_theme_mod('roach_ads_8'));
-    $ads9     =   base64_decode(get_theme_mod('roach_ads_9'));
-    $ads10     =   base64_decode(get_theme_mod('roach_ads_10'));
-    $ads_mid  =   base64_decode(get_theme_mod('roach_ads_mid'));
+    $ads1     =   get_theme_mod('roach_ads_1');
+    $ads2     =   get_theme_mod('roach_ads_2');
+    $ads3     =   get_theme_mod('roach_ads_3');
+    $ads4     =   get_theme_mod('roach_ads_4');
+    $ads5     =   get_theme_mod('roach_ads_5');
+    $ads6     =   get_theme_mod('roach_ads_6');
+    $ads7     =   get_theme_mod('roach_ads_7');
+    $ads8     =   get_theme_mod('roach_ads_8');
+    $ads9     =   get_theme_mod('roach_ads_9');
+    $ads10     =   get_theme_mod('roach_ads_10');
+    $ads_mid  =   get_theme_mod('roach_ads_mid');
 
     if ($ads1) :
 
@@ -940,67 +940,67 @@ function show_ads($atts, $content)
     switch ($ad) {
 
       case 1:
-        $ads =   base64_decode(get_theme_mod('roach_ads_before'));
+        $ads =   get_theme_mod('roach_ads_before');
         break;
 
       case 2:
-        $ads =   base64_decode(get_theme_mod('roach_ads_after'));
+        $ads =   get_theme_mod('roach_ads_after');
         break;
 
       case 3:
-        $ads =   base64_decode(get_theme_mod('roach_ads_1'));
+        $ads =   get_theme_mod('roach_ads_1');
         break;
 
       case 4:
-        $ads =   base64_decode(get_theme_mod('roach_ads_2'));
+        $ads =   get_theme_mod('roach_ads_2');
         break;
 
       case 5:
-        $ads =   base64_decode(get_theme_mod('roach_ads_3'));
+        $ads =   get_theme_mod('roach_ads_3');
         break;
 
       case 6:
-        $ads =   base64_decode(get_theme_mod('roach_ads_4'));
+        $ads =   get_theme_mod('roach_ads_4');
         break;
 
       case 7:
-        $ads =   base64_decode(get_theme_mod('roach_ads_5'));
+        $ads =   get_theme_mod('roach_ads_5');
         break;
 
       case 8:
-        $ads =   base64_decode(get_theme_mod('roach_ads_6'));
+        $ads =   get_theme_mod('roach_ads_6');
         break;
 
       case 9:
-        $ads =   base64_decode(get_theme_mod('roach_ads_7'));
+        $ads =   get_theme_mod('roach_ads_7');
         break;
 
       case 10:
-        $ads =   base64_decode(get_theme_mod('roach_ads_8'));
+        $ads =   get_theme_mod('roach_ads_8');
         break;
 
       case 11:
-        $ads =   base64_decode(get_theme_mod('roach_ads_9'));
+        $ads =   get_theme_mod('roach_ads_9');
         break;
 
       case 12:
-        $ads =   base64_decode(get_theme_mod('roach_ads_10'));
+        $ads =   get_theme_mod('roach_ads_10');
         break;
 
       case 13:
-        $ads =   base64_decode(get_theme_mod('roach_ads_before_sidebar'));
+        $ads =   get_theme_mod('roach_ads_before_sidebar');
         break;
 
       case 14:
-        $ads =   base64_decode(get_theme_mod('roach_ads_after_sidebar'));
+        $ads =   get_theme_mod('roach_ads_after_sidebar');
         break;
 
       case 15:
-        $ads =   base64_decode(get_theme_mod('roach_ads_mid'));
+        $ads =   get_theme_mod('roach_ads_mid');
         break;
 
       case 16:
-        $ads =   base64_decode(get_theme_mod('roach_ads_before_image'));
+        $ads =   get_theme_mod('roach_ads_before_image');
         break;
     }
 
