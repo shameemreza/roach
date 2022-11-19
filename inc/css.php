@@ -403,7 +403,7 @@ function customize_css()
     }
 
     .comment-respond>p,
-    .area-comentarios ol>p,
+    .area-comments ol>p,
     .error404 .content-loop p+p,
     .search .content-loop p+p {
       border-bottom: 1px solid <?php echo $roach_btn_background; ?>
@@ -525,7 +525,7 @@ function customize_css()
 
     p.sidebar-title,
     .comment-respond>p,
-    .area-comentarios ol>p,
+    .area-comments ol>p,
     .roach-subtitle {
       font-size: calc(<?php echo $roach_size_text; ?>px + 2px);
     }
