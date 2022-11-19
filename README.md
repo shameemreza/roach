@@ -2,15 +2,15 @@
 
 Get a professional and minimalist design in a few minutes. A lightweight SEO optmized and fast loading WordPress theme for niche bloger.
 
-[x] Perfect on-page SEO optimization in 1 click
-[x] Improve loading speed
-[x] Make your niche not look like a simple niche
-[x] Boost your SEO
-[x] Google AdSense Optmize
-[x] Insert Amazon products
-[x] Integrated SILO architecture
-[x] Rich snippets
-[x] many more...!
+- [x] Perfect on-page SEO optimization in 1 click
+- [x] Improve loading speed
+- [x] Make your niche not look like a simple niche
+- [x] Boost your SEO
+- [x] Google AdSense Optmize
+- [x] Insert Amazon products
+- [x] Integrated SILO architecture
+- [x] Rich snippets
+- [x] many more...!
 
 ## Acknowledgement
 
