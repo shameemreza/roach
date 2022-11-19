@@ -4557,7 +4557,7 @@ if (class_exists('WP_Customize_Control')) {
 
                     $wp_customize->add_setting('roach_last_paragraph_single', array(
                       'capability' => 'edit_theme_options',
-                      'default' => 'Si quieres conocer otros artículos parecidos a %%title%% puedes visitar la categoría %%category%%.',
+                      'default' => 'If you want to know other articles similar to %%title%% you can visit the category %%category%%.',
                       // 'sanitize_callback' => 'sanitize_textarea_field',
                     ));
 
@@ -4565,7 +4565,7 @@ if (class_exists('WP_Customize_Control')) {
                       'type' => 'textarea',
                       'section' => 'roach_single',
                       'label' => __('', 'roach'),
-                      'description' => __('<strong>Título</strong> %%title%%<br><strong>Categoría</strong> %%category%%<br><strong>Etiqueta</strong> %%tag%%<br><strong>Año actual</strong> %%currentyear%%'),
+                      'description' => __('<strong>Title</strong> %%title%%<br><strong>Category</strong> %%category%%<br><strong>Label</strong> %%tag%%<br><strong>Current year</strong> %%currentyear%%'),
                       'active_callback' => function ($control) {
                         return $control->manager->get_setting('roach_show_last_paragraph_single')->value();
                       },
@@ -4737,14 +4737,14 @@ if (class_exists('WP_Customize_Control')) {
 
                     $wp_customize->add_setting('roach_last_paragraph_page', array(
                       'capability' => 'edit_theme_options',
-                      'default' => 'Esperamos que te haya gustado este artículo sobre %%title%%.',
+                      'default' => 'We hope you liked this article about %%title%%.',
                     ));
 
                     $wp_customize->add_control('roach_last_paragraph_page', array(
                       'type' => 'textarea',
                       'section' => 'roach_page',
                       'label' => __('', 'roach'),
-                      'description' => __('<strong>Título</strong> %%title%%<br><strong>Etiqueta</strong> %%tag%%<br><strong>Año actual</strong> %%currentyear%%'),
+                      'description' => __('<strong>Title</strong> %%title%%<br><strong>Label</strong> %%tag%%<br><strong>Current year</strong> %%currentyear%%'),
                       'active_callback' => function ($control) {
                         return $control->manager->get_setting('roach_show_last_paragraph_page')->value();
                       },
@@ -5401,7 +5401,7 @@ if (class_exists('WP_Customize_Control')) {
                     $wp_customize->add_control('roach_enable_awesome', array(
                       'type' => 'checkbox',
                       'section' => 'roach_performance',
-                      'label' => __('Activate Awesome library', 'roach'),
+                      'label' => __('Activate Font Awesome library', 'roach'),
                     ));
 
                     $wp_customize->add_setting('roach_show_comments_url', array(
