@@ -12,19 +12,18 @@
 
 get_header();
 
-$show_sidebar = get_theme_mod('roach_show_sidebar_tag');
+$show_sidebar = get_theme_mod("roach_show_sidebar_tag");
 
-$enable_featured_posts = get_theme_mod('roach_enable_featured_posts');
-
+$enable_featured_posts = get_theme_mod("roach_enable_featured_posts");
 ?>
 
 <main class="content-loop">
 
   <?php echo roach_show_ads(5); ?>
 
-  <?php get_template_part('template-parts/header/content', 'header'); ?>
+  <?php get_template_part("template-parts/header/content", "header"); ?>
 
-  <?php if ($show_sidebar) : ?>
+  <?php if ($show_sidebar): ?>
 
     <section class="content-all">
 
@@ -34,23 +33,30 @@ $enable_featured_posts = get_theme_mod('roach_enable_featured_posts');
 
       <section class="content-area">
 
-        <?php if (have_posts()) : ?>
+        <?php if (have_posts()): ?>
 
           <?php get_columns(); ?>
 
-          <?php $columns = get_query_var('columns');  ?>
+          <?php $columns = get_query_var("columns"); ?>
 
           <?php $count = 1; ?>
 
-          <?php while (have_posts()) : the_post(); ?>
+          <?php while (have_posts()):
+              the_post(); ?>
 
-            <?php if (($count <= $columns) && ($enable_featured_posts)) { ?>
+            <?php if ($count <= $columns && $enable_featured_posts) { ?>
 
-              <?php get_template_part('template-parts/content/content', 'loop-featured'); ?>
+              <?php get_template_part(
+                  "template-parts/content/content",
+                  "loop-featured"
+              ); ?>
 
             <?php } else { ?>
 
-              <?php get_template_part('template-parts/content/content', 'loop'); ?>
+              <?php get_template_part(
+                  "template-parts/content/content",
+                  "loop"
+              ); ?>
 
             <?php } ?>
 
@@ -58,29 +64,29 @@ $enable_featured_posts = get_theme_mod('roach_enable_featured_posts');
 
             <?php $count++; ?>
 
-          <?php endwhile;
-        else : ?>
+          <?php
+          endwhile;else: ?>
 
-          <?php get_template_part('template-parts/none/content', 'none'); ?>
+          <?php get_template_part("template-parts/none/content", "none"); ?>
 
         <?php endif; ?>
 
         <?php
+        $paginate = paginate_links([
+            "prev_text" => "«",
+            "next_text" => "»",
+        ]);
 
-        $paginate = paginate_links(array(
-          'prev_text' => '«',
-          'next_text' => '»',
-        ));
-
-        if ($paginate) : ?>
+        if ($paginate): ?>
 
           <nav class="pagination"><?php echo $paginate; ?></nav>
 
-        <?php endif; ?>
+        <?php endif;
+        ?>
 
       </section>
 
-      <?php if ($show_sidebar) : ?>
+      <?php if ($show_sidebar): ?>
 
       </section>
 

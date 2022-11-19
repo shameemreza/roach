@@ -14,7 +14,7 @@ get_header(); ?>
 
 <main class="content-loop">
 
-  <?php get_template_part('template-parts/none/content', 'none'); ?>
+  <?php get_template_part("template-parts/none/content", "none"); ?>
 
 </main>
 

@@ -13,44 +13,45 @@
  * @since 0.0.1
  */
 
-if (post_password_required()) return; ?>
+if (post_password_required()) {
+    return;
+} ?>
 
 <div id="comments" class="area-comments">
 
-  <?php if (have_comments()) : ?>
+  <?php if (have_comments()): ?>
 
     <ol>
 
       <?php roach_comments_count(); ?>
 
-      <?php
-      wp_list_comments(array(
-        'style'     => 'ol',
-        'short_ping'   => true,
-        'avatar_size'   => 42,
-      )); ?>
+      <?php wp_list_comments([
+          "style" => "ol",
+          "short_ping" => true,
+          "avatar_size" => 42,
+      ]); ?>
 
     </ol>
 
     <?php
+    $nav = get_the_comments_navigation([
+        "screen_reader_text" => "Comments",
+    ]);
 
-    $nav = get_the_comments_navigation(array(
-      'screen_reader_text' => 'Comments',
-    ));
-
-    $nav = str_replace('<h2 class="screen-reader-text">Comments</h2>', '', $nav);
+    $nav = str_replace(
+        '<h2 class="screen-reader-text">Comments</h2>',
+        "",
+        $nav
+    );
 
     echo $nav;
     ?>
 
   <?php endif; ?>
 
-  <?php comment_form(
-    array(
-      'title_reply_before' => '<p>',
-      'title_reply_after' => '</p>',
-    )
-  );
-  ?>
+  <?php comment_form([
+      "title_reply_before" => "<p>",
+      "title_reply_after" => "</p>",
+  ]); ?>
 
 </div>

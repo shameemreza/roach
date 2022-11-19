@@ -17,23 +17,22 @@
 
 get_header();
 
-$show_sidebar = get_theme_mod('roach_show_sidebar_home');
-
-
+$show_sidebar = get_theme_mod("roach_show_sidebar_home");
 ?>
 
-<?php //roach_show_hero(2);  
+<?php
+//roach_show_hero(2);
 ?>
 
 <main class="content-loop">
 
   <?php roach_show_ads(5); ?>
 
-  <?php get_template_part('template-parts/header/content', 'header'); ?>
+  <?php get_template_part("template-parts/header/content", "header"); ?>
 
   <?php roach_show_home_text_before(); ?>
 
-  <?php if ($show_sidebar) : ?>
+  <?php if ($show_sidebar): ?>
 
     <section class="content-all">
 
@@ -43,13 +42,13 @@ $show_sidebar = get_theme_mod('roach_show_sidebar_home');
 
       <section class="content-area">
 
-        <?php get_template_part('template-parts/loops/loop', 'last'); ?>
+        <?php get_template_part("template-parts/loops/loop", "last"); ?>
 
       </section>
 
       <?php roach_show_home_text_after(); ?>
 
-      <?php if ($show_sidebar) : ?>
+      <?php if ($show_sidebar): ?>
 
       </section>
 

@@ -16,33 +16,34 @@ get_header(); ?>
 
   <section class="content-area">
 
-    <?php if (have_posts()) : ?>
+    <?php if (have_posts()): ?>
 
       <?php get_columns(); ?>
 
-      <?php while (have_posts()) : the_post(); ?>
+      <?php while (have_posts()):
+          the_post(); ?>
 
-        <?php get_template_part('template-parts/content/content', 'loop'); ?>
+        <?php get_template_part("template-parts/content/content", "loop"); ?>
 
-      <?php endwhile;
-    else : ?>
+      <?php
+      endwhile;else: ?>
 
-      <?php get_template_part('template-parts/none/content', 'none'); ?>
+      <?php get_template_part("template-parts/none/content", "none"); ?>
 
     <?php endif; ?>
 
     <?php
+    $paginate = paginate_links([
+        "prev_text" => "«",
+        "next_text" => "»",
+    ]);
 
-    $paginate = paginate_links(array(
-      'prev_text' => '«',
-      'next_text' => '»',
-    ));
-
-    if ($paginate) : ?>
+    if ($paginate): ?>
 
       <nav class="pagination"><?php echo $paginate; ?></nav>
 
-    <?php endif; ?>
+    <?php endif;
+    ?>
 
   </section>
 

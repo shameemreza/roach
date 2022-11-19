@@ -1,59 +1,66 @@
 <?php
 
 /**
- * The sidebar containing the main widget area.
+ * The template for displaying all single posts
  *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package Roach
  * @author Shameem Reza
  * @since 0.0.1
  */
 
-$sticky_sidebar = get_theme_mod("roach_sticky_sidebar"); ?>
+get_header();
 
-<aside id="primary-sidebar" class="primary-sidebar widget-area" role="complementary">
+$hide_sidebar = get_post_meta(get_the_ID(), "hide_sidebar", true);
 
-  <?php if ($sticky_sidebar): ?>
+$roach_full_header = get_theme_mod("roach_full_header");
 
-    <div class="sticky">
+if (get_theme_mod("roach_show_sidebar_single") && !$hide_sidebar):
+    $class_content = "content-thin";
+else:
+    $class_content = "article-full";
+endif;
+?>
 
-    <?php endif; ?>
+<main class="content-single">
+
+  <?php roach_show_ads(5); ?>
+
+  <?php if (have_posts()): ?>
+
+    <?php while (have_posts()):
+        the_post(); ?>
+
+      <?php roach_data_images(); ?>
+
+      <article class="<?php echo $class_content; ?>">
+
+        <?php get_template_part("template-parts/header/content", "header"); ?>
+
+        <?php get_template_part("template-parts/single/content", "single"); ?>
+
+      </article>
 
     <?php
-    $wc = roach_wc_check();
+    endwhile;else: ?>
 
-    if ($wc):
-        if (is_product()):
-            get_template_part("template-parts/sidebar/sidebar", "product");
-        endif;
-    else:
-        if (is_single()):
-            get_template_part("template-parts/sidebar/sidebar", "single");
-        endif;
-
-        if (is_page()):
-            get_template_part("template-parts/sidebar/sidebar", "page");
-        endif;
-
-        if (is_home()):
-            get_template_part("template-parts/sidebar/sidebar", "home");
-        endif;
-
-        if (is_category()):
-            get_template_part("template-parts/sidebar/sidebar", "cat");
-        endif;
-
-        if (is_tag()):
-            get_template_part("template-parts/sidebar/sidebar", "tag");
-        endif;
-    endif;
-    ?>
-
-    <?php if ($sticky_sidebar): ?>
-
-    </div>
+    <?php get_template_part("template-parts/none/content", "none"); ?>
 
   <?php endif; ?>
 
-</aside>
+  <?php if (get_theme_mod("roach_show_sidebar_single") && !$hide_sidebar):
+      get_sidebar();
+  endif; ?>
+
+</main>
+
+<?php
+get_footer();
+
+if (get_theme_mod("roach_enable_post_index")):
+    do_action("create_index");
+endif;
+
+
+?>
