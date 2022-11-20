@@ -8,6 +8,7 @@ Create a professional and minimalist WordPress blog in a few minutes. It is a li
 - [x] Insert Amazon products
 - [x] Integrated SILO architecture
 - [x] Rich snippets
+- [] Local fonts
 - [x] many more...!
 
 ## Acknowledgement
