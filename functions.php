@@ -275,7 +275,6 @@ require get_template_directory() . "/inc/schema.php";
 require get_template_directory() . "/inc/categories.php";
 require get_template_directory() . "/inc/toc.php";
 require get_template_directory() . "/inc/metabox.php";
-require get_template_directory() . "/inc/shortcodes.php";
 require get_template_directory() . "/inc/breadcrumbs.php"; /*
 /*
  * Script defer

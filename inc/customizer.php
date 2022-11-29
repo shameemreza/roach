@@ -3501,18 +3501,6 @@ function roach_customize_register($wp_customize)
         "label" => __("Show description", "roach"),
     ]);
 
-    $wp_customize->add_setting("roach_show_cluster_extract", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_show_cluster_extract", [
-        "type" => "checkbox",
-        "section" => "roach_loop",
-        "label" => __("Show description in clusters", "roach"),
-    ]);
-
     $wp_customize->add_setting("roach_extract_long", [
         "type" => "theme_mod",
         "capability" => "edit_theme_options",
