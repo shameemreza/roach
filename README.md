@@ -2,13 +2,13 @@
 
 Create a professional and minimalist WordPress blog in a few minutes. It is a lightweight, SEO-optimized, fast-loading WordPress theme built for niche bloggers.
 
-- [x] One Click on-page SEO optimization
+- [x] On-page SEO optimization
 - [x] Improve website loading speed
 - [x] Google AdSense Optmize
-- [x] Insert Amazon products
+- [x] Amazon Affilaite Optmize
 - [x] Integrated SILO architecture
 - [x] Rich snippets
-- [ ] Local fonts
+- [x] Local fonts
 - [x] many more...!
 
 ## Acknowledgement
