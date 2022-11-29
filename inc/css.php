@@ -737,10 +737,6 @@ function customize_css()
       height: 196px;
     }
 
-    .content-thin .content-cluster .article-content {
-      height: 160px !important;
-    }
-
     .last-post-sidebar .article-content {
       height: 140px;
       margin-bottom: 8px
@@ -980,28 +976,6 @@ function customize_css()
 
       .related-posts .article-loop {
         margin-bottom: 0 !important;
-      }
-    }
-
-    <?php elseif (
-        get_theme_mod("roach_show_cluster_extract")
-    ): ?>.content-cluster .article-loop p,
-    .content-cluster .article-loop h2,
-    .content-cluster .article-loop h3,
-    .content-cluster .article-loop h4,
-    .content-cluster .article-loop span.entry-title {
-      text-align: left !important;
-      margin-bottom: 8px !important;
-      padding: 0 10px 0 0 !important;
-    }
-
-    .content-cluster .article-loop .show-extract p {
-      font-size: calc(<?php echo $roach_size_text; ?>px - 2px) !important;
-    }
-
-    @media (min-width:800px) {
-      .content-cluster .article-loop {
-        margin-bottom: 1rem !important;
       }
     }
 

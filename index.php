@@ -20,10 +20,6 @@ get_header();
 $show_sidebar = get_theme_mod("roach_show_sidebar_home");
 ?>
 
-<?php
-//roach_show_hero(2);
-?>
-
 <main class="content-loop">
 
   <?php roach_show_ads(5); ?>

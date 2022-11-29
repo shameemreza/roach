@@ -1,15 +1,5 @@
 <?php
 
-$cluster_columns = get_query_var('cluster_columns');
-
-if ($cluster_columns) {
-
-  $columns = $cluster_columns;
-} else {
-
-  $columns = get_query_var('columns');
-}
-
 $featured_post   = get_post_meta(get_the_ID(), 'featured_post', true);
 
 $show_category = get_query_var('show_category');

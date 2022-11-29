@@ -359,7 +359,7 @@ function roach_customize_register($wp_customize)
 	));
 	
 	$wp_customize->add_section('roach_ads_sec_loop', array(
-		'title' => __('On loops', 'roach') ,
+		'title' => __('On Archives', 'roach') ,
 		'panel' => 'custom_options_ads',
 		'priority' => 1,
 		'capability' => 'edit_theme_options',
@@ -3481,7 +3481,7 @@ $wp_customize->add_setting('roach_ads_loop_5', array(
     ]);
 
     $wp_customize->add_section("roach_loop", [
-        "title" => __("Listing options", "roach"),
+        "title" => __("Archive options", "roach"),
         "panel" => "custom_options",
         "priority" => 5,
         "capability" => "edit_theme_options",
