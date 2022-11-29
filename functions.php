@@ -277,14 +277,7 @@ require get_template_directory() . "/inc/toc.php";
 require get_template_directory() . "/inc/metabox.php";
 require get_template_directory() . "/inc/shortcodes.php";
 require get_template_directory() . "/inc/breadcrumbs.php"; /*
- * Editor
- */
-if (class_exists("Classic_Editor") || get_theme_mod("roach_delete_guten_css")) {
-    require get_template_directory() . "/inc/thickbox.php";
-} else {
-    require get_template_directory() . "/inc/gutenberg/clusters.php";
-    require get_template_directory() . "/inc/gutenberg/shortcodes.php";
-} /*
+/*
  * Script defer
  */
 if (!is_admin()) {
