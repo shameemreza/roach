@@ -296,3012 +296,3164 @@ function roach_customize_register($wp_customize)
      * Ads options panel
      */
 
-    $wp_customize->add_panel("custom_options_ads", [
-        "title" => __("Advertising and Analytics", "roach"),
-        "priority" => 120,
-        "capability" => "edit_theme_options",
-    ]);
-
-    $wp_customize->add_section("roach_ads_settings", [
-        "title" => __("Google Analytics and others", "roach"),
-        "panel" => "custom_options_ads",
-        "priority" => 1,
-        "capability" => "edit_theme_options",
-    ]);
-
-    $wp_customize->add_section("roach_ads_sec_enable", [
-        "title" => __("Enable Advertising", "roach"),
-        "panel" => "custom_options_ads",
-        "priority" => 1,
-        "capability" => "edit_theme_options",
-    ]);
-
-    $wp_customize->add_section("roach_ads_sec_header", [
-        "title" => __("Header", "roach"),
-        "panel" => "custom_options_ads",
-        "priority" => 1,
-        "capability" => "edit_theme_options",
-    ]);
-
-    $wp_customize->add_section("roach_ads_sec_before", [
-        "title" => __("Before the content", "roach"),
-        "panel" => "custom_options_ads",
-        "priority" => 1,
-        "capability" => "edit_theme_options",
-    ]);
-
-    $wp_customize->add_section("roach_ads_sec_middle", [
-        "title" => __("Half of the content", "roach"),
-        "panel" => "custom_options_ads",
-        "priority" => 1,
-        "capability" => "edit_theme_options",
-    ]);
-
-    $wp_customize->add_section("roach_ads_sec_after", [
-        "title" => __("After the content", "roach"),
-        "panel" => "custom_options_ads",
-        "priority" => 1,
-        "capability" => "edit_theme_options",
-    ]);
-
-    $wp_customize->add_section("roach_ads_sec_inside", [
-        "title" => __("Inside the content", "roach"),
-        "panel" => "custom_options_ads",
-        "priority" => 1,
-        "capability" => "edit_theme_options",
-    ]);
-
-    $wp_customize->add_section("roach_ads_sec_sidebar", [
-        "title" => __("On sidebar", "roach"),
-        "panel" => "custom_options_ads",
-        "priority" => 1,
-        "capability" => "edit_theme_options",
-    ]);
-
-    $wp_customize->add_section("roach_ads_sec_loop", [
-        "title" => __("On loops", "roach"),
-        "panel" => "custom_options_ads",
-        "priority" => 1,
-        "capability" => "edit_theme_options",
-    ]);
-
-    $wp_customize->add_setting("roach_show_ads", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_show_ads", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_enable",
-        "priority" => 1,
-        "label" => __("Activate advertising", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_code_analytics", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_code_analytics", [
-        "label" => __("Code in ‹head›", "roach"),
-        "description" => __(
-            "This code will be printed in the ‹head› section. Usage examples: Google Analytics, Search Console, Facebook Pixel",
-            "roach"
-        ),
-        "section" => "roach_ads_settings",
-        "priority" => 1,
-        "type" => "textarea",
-    ]);
-
-    $wp_customize->add_setting("roach_body_code", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_body_code", [
-        "label" => __("Code in ‹body›", "roach"),
-        "description" => __(
-            "This code will be printed just below the opening ‹body› tag.",
-            "roach"
-        ),
-        "section" => "roach_ads_settings",
-        "priority" => 1,
-        "type" => "textarea",
-    ]);
-
-    $wp_customize->add_setting("roach_footer_code", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_footer_code", [
-        "label" => __("Code before ‹/body›", "roach"),
-        "description" => __(
-            "This code will be printed above the closing ‹/body› tag.",
-            "roach"
-        ),
-        "section" => "roach_ads_settings",
-        "priority" => 1,
-        "type" => "textarea",
-    ]);
-
-    $wp_customize->add_setting("roach_ads_1", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_1", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "type" => "textarea",
-        "description" => __("Shortcode: [ads id=3]", "roach"),
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_1_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After paragraph 1", "roach"),
-        "2" => __("After paragraph 2", "roach"),
-        "3" => __("After paragraph 3", "roach"),
-        "4" => __("After paragraph 4", "roach"),
-        "5" => __("After paragraph 5", "roach"),
-        "6" => __("After paragraph 6", "roach"),
-        "7" => __("After paragraph 7", "roach"),
-        "8" => __("After paragraph 8", "roach"),
-        "9" => __("After paragraph 9", "roach"),
-        "10" => __("After paragraph 10", "roach"),
-        "11" => __("After paragraph 11", "roach"),
-        "12" => __("After paragraph 12", "roach"),
-        "13" => __("After paragraph 13", "roach"),
-        "14" => __("After paragraph 14", "roach"),
-        "15" => __("After paragraph 15", "roach"),
-        "16" => __("After paragraph 16", "roach"),
-        "17" => __("After paragraph 17", "roach"),
-        "18" => __("After paragraph 18", "roach"),
-        "19" => __("After paragraph 19", "roach"),
-        "20" => __("After paragraph 20", "roach"),
-        "0-1" => __("After first H2", "roach"),
-        "0-2" => __("After second H2", "roach"),
-        "0-3" => __("After third H2", "roach"),
-        "0-4" => __("After fourth H2", "roach"),
-        "0-5" => __("After fifth H2", "roach"),
-        "0-6" => __("After sixth H2", "roach"),
-        "0-7" => __("After seventh H2", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_1_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_1_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_1_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_1_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("only posts", "roach"),
-        "3" => __("only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_1_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_1_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_1_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_1_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control($wp_customize, "roach_ads_1_cat", [
-            "section" => "roach_ads_sec_inside",
-            "priority" => 1,
-        ])
-    );
-
-    $wp_customize->add_setting("roach_ads_1_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_1_margin", [
-        "section" => "roach_ads_sec_inside",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_2", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_2", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "description" => __("Shortcode: [ads id=4]", "roach"),
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_2_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After paragraph 1", "roach"),
-        "2" => __("After paragraph 2", "roach"),
-        "3" => __("After paragraph 3", "roach"),
-        "4" => __("After paragraph 4", "roach"),
-        "5" => __("After paragraph 5", "roach"),
-        "6" => __("After paragraph 6", "roach"),
-        "7" => __("After paragraph 7", "roach"),
-        "8" => __("After paragraph 8", "roach"),
-        "9" => __("After paragraph 9", "roach"),
-        "10" => __("After paragraph 10", "roach"),
-        "11" => __("After paragraph 11", "roach"),
-        "12" => __("After paragraph 12", "roach"),
-        "13" => __("After paragraph 13", "roach"),
-        "14" => __("After paragraph 14", "roach"),
-        "15" => __("After paragraph 15", "roach"),
-        "16" => __("After paragraph 16", "roach"),
-        "17" => __("After paragraph 17", "roach"),
-        "18" => __("After paragraph 18", "roach"),
-        "19" => __("After paragraph 19", "roach"),
-        "20" => __("After paragraph 20", "roach"),
-        "0-1" => __("After first H2", "roach"),
-        "0-2" => __("After second H2", "roach"),
-        "0-3" => __("After third H2", "roach"),
-        "0-4" => __("After fourth H2", "roach"),
-        "0-5" => __("After fifth H2", "roach"),
-        "0-6" => __("After sixth H2", "roach"),
-        "0-7" => __("After seventh H2", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_2_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_2_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_2_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_2_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("only posts", "roach"),
-        "3" => __("only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_2_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_2_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_2_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_2_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control($wp_customize, "roach_ads_2_cat", [
-            "section" => "roach_ads_sec_inside",
-            "priority" => 1,
-        ])
-    );
-
-    $wp_customize->add_setting("roach_ads_2_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_2_margin", [
-        "section" => "roach_ads_sec_inside",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_3", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_3", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "description" => __("Shortcode: [ads id=5]", "roach"),
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_3_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After paragraph 1", "roach"),
-        "2" => __("After paragraph 2", "roach"),
-        "3" => __("After paragraph 3", "roach"),
-        "4" => __("After paragraph 4", "roach"),
-        "5" => __("After paragraph 5", "roach"),
-        "6" => __("After paragraph 6", "roach"),
-        "7" => __("After paragraph 7", "roach"),
-        "8" => __("After paragraph 8", "roach"),
-        "9" => __("After paragraph 9", "roach"),
-        "10" => __("After paragraph 10", "roach"),
-        "11" => __("After paragraph 11", "roach"),
-        "12" => __("After paragraph 12", "roach"),
-        "13" => __("After paragraph 13", "roach"),
-        "14" => __("After paragraph 14", "roach"),
-        "15" => __("After paragraph 15", "roach"),
-        "16" => __("After paragraph 16", "roach"),
-        "17" => __("After paragraph 17", "roach"),
-        "18" => __("After paragraph 18", "roach"),
-        "19" => __("After paragraph 19", "roach"),
-        "20" => __("After paragraph 20", "roach"),
-        "0-1" => __("After first H2", "roach"),
-        "0-2" => __("After second H2", "roach"),
-        "0-3" => __("After third H2", "roach"),
-        "0-4" => __("After fourth H2", "roach"),
-        "0-5" => __("After fifth H2", "roach"),
-        "0-6" => __("After sixth H2", "roach"),
-        "0-7" => __("After seventh H2", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_3_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_3_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_3_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_3_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("only posts", "roach"),
-        "3" => __("only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_3_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_3_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_3_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_3_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control($wp_customize, "roach_ads_3_cat", [
-            "section" => "roach_ads_sec_inside",
-            "priority" => 1,
-        ])
-    );
-
-    $wp_customize->add_setting("roach_ads_3_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_3_margin", [
-        "section" => "roach_ads_sec_inside",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_4", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_4", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "description" => __("Shortcode: [ads id=6]", "roach"),
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_4_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After paragraph 1", "roach"),
-        "2" => __("After paragraph 2", "roach"),
-        "3" => __("After paragraph 3", "roach"),
-        "4" => __("After paragraph 4", "roach"),
-        "5" => __("After paragraph 5", "roach"),
-        "6" => __("After paragraph 6", "roach"),
-        "7" => __("After paragraph 7", "roach"),
-        "8" => __("After paragraph 8", "roach"),
-        "9" => __("After paragraph 9", "roach"),
-        "10" => __("After paragraph 10", "roach"),
-        "11" => __("After paragraph 11", "roach"),
-        "12" => __("After paragraph 12", "roach"),
-        "13" => __("After paragraph 13", "roach"),
-        "14" => __("After paragraph 14", "roach"),
-        "15" => __("After paragraph 15", "roach"),
-        "16" => __("After paragraph 16", "roach"),
-        "17" => __("After paragraph 17", "roach"),
-        "18" => __("After paragraph 18", "roach"),
-        "19" => __("After paragraph 19", "roach"),
-        "20" => __("After paragraph 20", "roach"),
-        "0-1" => __("After first H2", "roach"),
-        "0-2" => __("After second H2", "roach"),
-        "0-3" => __("After third H2", "roach"),
-        "0-4" => __("After fourth H2", "roach"),
-        "0-5" => __("After fifth H2", "roach"),
-        "0-6" => __("After sixth H2", "roach"),
-        "0-7" => __("After seventh H2", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_4_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_4_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_4_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_4_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("only posts", "roach"),
-        "3" => __("only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_4_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_4_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_4_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_4_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control($wp_customize, "roach_ads_4_cat", [
-            "section" => "roach_ads_sec_inside",
-            "priority" => 1,
-        ])
-    );
-
-    $wp_customize->add_setting("roach_ads_4_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_4_margin", [
-        "section" => "roach_ads_sec_inside",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_5", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_5", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "description" => __("Shortcode: [ads id=7]", "roach"),
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_5_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After paragraph 1", "roach"),
-        "2" => __("After paragraph 2", "roach"),
-        "3" => __("After paragraph 3", "roach"),
-        "4" => __("After paragraph 4", "roach"),
-        "5" => __("After paragraph 5", "roach"),
-        "6" => __("After paragraph 6", "roach"),
-        "7" => __("After paragraph 7", "roach"),
-        "8" => __("After paragraph 8", "roach"),
-        "9" => __("After paragraph 9", "roach"),
-        "10" => __("After paragraph 10", "roach"),
-        "11" => __("After paragraph 11", "roach"),
-        "12" => __("After paragraph 12", "roach"),
-        "13" => __("After paragraph 13", "roach"),
-        "14" => __("After paragraph 14", "roach"),
-        "15" => __("After paragraph 15", "roach"),
-        "16" => __("After paragraph 16", "roach"),
-        "17" => __("After paragraph 17", "roach"),
-        "18" => __("After paragraph 18", "roach"),
-        "19" => __("After paragraph 19", "roach"),
-        "20" => __("After paragraph 20", "roach"),
-        "0-1" => __("After first H2", "roach"),
-        "0-2" => __("After second H2", "roach"),
-        "0-3" => __("After third H2", "roach"),
-        "0-4" => __("After fourth H2", "roach"),
-        "0-5" => __("After fifth H2", "roach"),
-        "0-6" => __("After sixth H2", "roach"),
-        "0-7" => __("After seventh H2", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_5_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_5_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_5_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_5_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("only posts", "roach"),
-        "3" => __("only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_5_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_5_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_5_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_5_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control($wp_customize, "roach_ads_5_cat", [
-            "section" => "roach_ads_sec_inside",
-            "priority" => 1,
-        ])
-    );
-
-    $wp_customize->add_setting("roach_ads_5_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_5_margin", [
-        "section" => "roach_ads_sec_inside",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_6", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_6", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "description" => __("Shortcode: [ads id=8]", "roach"),
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_6_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After paragraph 1", "roach"),
-        "2" => __("After paragraph 2", "roach"),
-        "3" => __("After paragraph 3", "roach"),
-        "4" => __("After paragraph 4", "roach"),
-        "5" => __("After paragraph 5", "roach"),
-        "6" => __("After paragraph 6", "roach"),
-        "7" => __("After paragraph 7", "roach"),
-        "8" => __("After paragraph 8", "roach"),
-        "9" => __("After paragraph 9", "roach"),
-        "10" => __("After paragraph 10", "roach"),
-        "11" => __("After paragraph 11", "roach"),
-        "12" => __("After paragraph 12", "roach"),
-        "13" => __("After paragraph 13", "roach"),
-        "14" => __("After paragraph 14", "roach"),
-        "15" => __("After paragraph 15", "roach"),
-        "16" => __("After paragraph 16", "roach"),
-        "17" => __("After paragraph 17", "roach"),
-        "18" => __("After paragraph 18", "roach"),
-        "19" => __("After paragraph 19", "roach"),
-        "20" => __("After paragraph 20", "roach"),
-        "0-1" => __("After first H2", "roach"),
-        "0-2" => __("After second H2", "roach"),
-        "0-3" => __("After third H2", "roach"),
-        "0-4" => __("After fourth H2", "roach"),
-        "0-5" => __("After fifth H2", "roach"),
-        "0-6" => __("After sixth H2", "roach"),
-        "0-7" => __("After seventh H2", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_6_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_6_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_6_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_6_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("only posts", "roach"),
-        "3" => __("only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_6_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_6_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_6_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_6_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control($wp_customize, "roach_ads_6_cat", [
-            "section" => "roach_ads_sec_inside",
-            "priority" => 1,
-        ])
-    );
-
-    $wp_customize->add_setting("roach_ads_6_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_6_margin", [
-        "section" => "roach_ads_sec_inside",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_7", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_7", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "description" => __("Shortcode: [ads id=9]", "roach"),
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_7_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After paragraph 1", "roach"),
-        "2" => __("After paragraph 2", "roach"),
-        "3" => __("After paragraph 3", "roach"),
-        "4" => __("After paragraph 4", "roach"),
-        "5" => __("After paragraph 5", "roach"),
-        "6" => __("After paragraph 6", "roach"),
-        "7" => __("After paragraph 7", "roach"),
-        "8" => __("After paragraph 8", "roach"),
-        "9" => __("After paragraph 9", "roach"),
-        "10" => __("After paragraph 10", "roach"),
-        "11" => __("After paragraph 11", "roach"),
-        "12" => __("After paragraph 12", "roach"),
-        "13" => __("After paragraph 13", "roach"),
-        "14" => __("After paragraph 14", "roach"),
-        "15" => __("After paragraph 15", "roach"),
-        "16" => __("After paragraph 16", "roach"),
-        "17" => __("After paragraph 17", "roach"),
-        "18" => __("After paragraph 18", "roach"),
-        "19" => __("After paragraph 19", "roach"),
-        "20" => __("After paragraph 20", "roach"),
-        "0-1" => __("After first H2", "roach"),
-        "0-2" => __("After second H2", "roach"),
-        "0-3" => __("After third H2", "roach"),
-        "0-4" => __("After fourth H2", "roach"),
-        "0-5" => __("After fifth H2", "roach"),
-        "0-6" => __("After sixth H2", "roach"),
-        "0-7" => __("After seventh H2", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_7_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_7_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_7_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_7_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("only posts", "roach"),
-        "3" => __("only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_7_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_7_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_7_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_7_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control($wp_customize, "roach_ads_7_cat", [
-            "section" => "roach_ads_sec_inside",
-            "priority" => 1,
-        ])
-    );
-
-    $wp_customize->add_setting("roach_ads_7_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_7_margin", [
-        "section" => "roach_ads_sec_inside",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_8", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_8", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "description" => __("Shortcode: [ads id=10]", "roach"),
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_8_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After paragraph 1", "roach"),
-        "2" => __("After paragraph 2", "roach"),
-        "3" => __("After paragraph 3", "roach"),
-        "4" => __("After paragraph 4", "roach"),
-        "5" => __("After paragraph 5", "roach"),
-        "6" => __("After paragraph 6", "roach"),
-        "7" => __("After paragraph 7", "roach"),
-        "8" => __("After paragraph 8", "roach"),
-        "9" => __("After paragraph 9", "roach"),
-        "10" => __("After paragraph 10", "roach"),
-        "11" => __("After paragraph 11", "roach"),
-        "12" => __("After paragraph 12", "roach"),
-        "13" => __("After paragraph 13", "roach"),
-        "14" => __("After paragraph 14", "roach"),
-        "15" => __("After paragraph 15", "roach"),
-        "16" => __("After paragraph 16", "roach"),
-        "17" => __("After paragraph 17", "roach"),
-        "18" => __("After paragraph 18", "roach"),
-        "19" => __("After paragraph 19", "roach"),
-        "20" => __("After paragraph 20", "roach"),
-        "0-1" => __("After first H2", "roach"),
-        "0-2" => __("After second H2", "roach"),
-        "0-3" => __("After third H2", "roach"),
-        "0-4" => __("After fourth H2", "roach"),
-        "0-5" => __("After fifth H2", "roach"),
-        "0-6" => __("After sixth H2", "roach"),
-        "0-7" => __("After seventh H2", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_8_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_8_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_8_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_8_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("only posts", "roach"),
-        "3" => __("only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_8_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_8_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_8_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_8_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control($wp_customize, "roach_ads_8_cat", [
-            "section" => "roach_ads_sec_inside",
-            "priority" => 1,
-        ])
-    );
-
-    $wp_customize->add_setting("roach_ads_8_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_8_margin", [
-        "section" => "roach_ads_sec_inside",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_9", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_9", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "description" => __("Shortcode: [ads id=11]", "roach"),
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_9_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After paragraph 1", "roach"),
-        "2" => __("After paragraph 2", "roach"),
-        "3" => __("After paragraph 3", "roach"),
-        "4" => __("After paragraph 4", "roach"),
-        "5" => __("After paragraph 5", "roach"),
-        "6" => __("After paragraph 6", "roach"),
-        "7" => __("After paragraph 7", "roach"),
-        "8" => __("After paragraph 8", "roach"),
-        "9" => __("After paragraph 9", "roach"),
-        "10" => __("After paragraph 10", "roach"),
-        "11" => __("After paragraph 11", "roach"),
-        "12" => __("After paragraph 12", "roach"),
-        "13" => __("After paragraph 13", "roach"),
-        "14" => __("After paragraph 14", "roach"),
-        "15" => __("After paragraph 15", "roach"),
-        "16" => __("After paragraph 16", "roach"),
-        "17" => __("After paragraph 17", "roach"),
-        "18" => __("After paragraph 18", "roach"),
-        "19" => __("After paragraph 19", "roach"),
-        "20" => __("After paragraph 20", "roach"),
-        "0-1" => __("After first H2", "roach"),
-        "0-2" => __("After second H2", "roach"),
-        "0-3" => __("After third H2", "roach"),
-        "0-4" => __("After fourth H2", "roach"),
-        "0-5" => __("After fifth H2", "roach"),
-        "0-6" => __("After sixth H2", "roach"),
-        "0-7" => __("After seventh H2", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_9_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_9_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_9_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_9_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("only posts", "roach"),
-        "3" => __("only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_9_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_9_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_9_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_9_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control($wp_customize, "roach_ads_9_cat", [
-            "section" => "roach_ads_sec_inside",
-            "priority" => 1,
-        ])
-    );
-
-    $wp_customize->add_setting("roach_ads_9_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_9_margin", [
-        "section" => "roach_ads_sec_inside",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_10", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_10", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "description" => __("Shortcode: [ads id=12]", "roach"),
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_10_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After paragraph 1", "roach"),
-        "2" => __("After paragraph 2", "roach"),
-        "3" => __("After paragraph 3", "roach"),
-        "4" => __("After paragraph 4", "roach"),
-        "5" => __("After paragraph 5", "roach"),
-        "6" => __("After paragraph 6", "roach"),
-        "7" => __("After paragraph 7", "roach"),
-        "8" => __("After paragraph 8", "roach"),
-        "9" => __("After paragraph 9", "roach"),
-        "10" => __("After paragraph 10", "roach"),
-        "11" => __("After paragraph 11", "roach"),
-        "12" => __("After paragraph 12", "roach"),
-        "13" => __("After paragraph 13", "roach"),
-        "14" => __("After paragraph 14", "roach"),
-        "15" => __("After paragraph 15", "roach"),
-        "16" => __("After paragraph 16", "roach"),
-        "17" => __("After paragraph 17", "roach"),
-        "18" => __("After paragraph 18", "roach"),
-        "19" => __("After paragraph 19", "roach"),
-        "20" => __("After paragraph 20", "roach"),
-        "0-1" => __("After first H2", "roach"),
-        "0-2" => __("After second H2", "roach"),
-        "0-3" => __("After third H2", "roach"),
-        "0-4" => __("After fourth H2", "roach"),
-        "0-5" => __("After fifth H2", "roach"),
-        "0-6" => __("After sixth H2", "roach"),
-        "0-7" => __("After seventh H2", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_10_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_10_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_10_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_10_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("only posts", "roach"),
-        "3" => __("only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_10_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_10_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_10_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_inside",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_10_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control($wp_customize, "roach_ads_10_cat", [
-            "section" => "roach_ads_sec_inside",
-            "priority" => 1,
-        ])
-    );
-
-    $wp_customize->add_setting("roach_ads_10_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_10_margin", [
-        "section" => "roach_ads_sec_inside",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_image", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_before_image", [
-        "label" => __("Before featured image", "roach"),
-        "section" => "roach_ads_sec_before",
-        "description" => __("Shortcode: [ads id=16]", "roach"),
-        "priority" => 1,
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_image_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_before_image_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_before",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_image_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("Only posts", "roach"),
-        "3" => __("Only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_before_image_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_before",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_image_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_before_image_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_before",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_image_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control(
-            $wp_customize,
-            "roach_ads_before_image_cat",
-            [
-                "section" => "roach_ads_sec_before",
-                "priority" => 1,
-            ]
-        )
-    );
-
-    $wp_customize->add_setting("roach_ads_before_image_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_before_image_margin", [
-        "section" => "roach_ads_sec_before",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_before", [
-        "label" => __("After featured image", "roach"),
-        "section" => "roach_ads_sec_before",
-        "description" => __("Shortcode: [ads id=1]", "roach"),
-        "priority" => 1,
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_before_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_before",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("Only posts", "roach"),
-        "3" => __("Only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_before_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_before",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_before_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_before",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control(
-            $wp_customize,
-            "roach_ads_before_cat",
-            [
-                "section" => "roach_ads_sec_before",
-                "priority" => 1,
-            ]
-        )
-    );
-
-    $wp_customize->add_setting("roach_ads_before_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_before_margin", [
-        "section" => "roach_ads_sec_before",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_after", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_after", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_after",
-        "priority" => 1,
-        "description" => __("Shortcode: [ads id=2]", "roach"),
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_after_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_after_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_after",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_after_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("Only posts", "roach"),
-        "3" => __("Only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_after_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_after",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_after_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_after_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_after",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_after_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control(
-            $wp_customize,
-            "roach_ads_after_cat",
-            [
-                "section" => "roach_ads_sec_after",
-                "priority" => 1,
-            ]
-        )
-    );
-
-    $wp_customize->add_setting("roach_ads_after_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_after_margin", [
-        "section" => "roach_ads_sec_after",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_header", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_header", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_header",
-        "description" => __("Shortcode: [ads id=0]", "roach"),
-        "priority" => 1,
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_header_show_home", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_header_show_home", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_header",
-        "priority" => 1,
-        "label" => __("Home page", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_header_show_cats", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_header_show_cats", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_header",
-        "priority" => 1,
-        "label" => __("Categories", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_header_show_tags", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_header_show_tags", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_header",
-        "priority" => 1,
-        "label" => __("Tags", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_header_show_posts", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_header_show_posts", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_header",
-        "priority" => 1,
-        "label" => __("Posts", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_header_show_pages", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_header_show_pages", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_header",
-        "priority" => 1,
-        "label" => __("Pages", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_header_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_header_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_header",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_header_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control(
-            $wp_customize,
-            "roach_ads_header_cat",
-            [
-                "section" => "roach_ads_sec_header",
-                "priority" => 1,
-            ]
-        )
-    );
-
-    $wp_customize->add_setting("roach_ads_header_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_header_margin", [
-        "section" => "roach_ads_sec_header",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_sidebar", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_before_sidebar", [
-        "label" => __("Before content", "roach"),
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_sidebar_show_home", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_before_sidebar_show_home", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "label" => __("Home page", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_sidebar_show_cats", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_before_sidebar_show_cats", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "label" => __("Categories", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_sidebar_show_tags", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_before_sidebar_show_tags", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "label" => __("Tags", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_sidebar_show_posts", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_before_sidebar_show_posts", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "label" => __("Posts", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_sidebar_show_pages", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_before_sidebar_show_pages", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "label" => __("Pages", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_sidebar_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_before_sidebar_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_before_sidebar_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control(
-            $wp_customize,
-            "roach_ads_before_sidebar_cat",
-            [
-                "section" => "roach_ads_sec_sidebar",
-                "priority" => 1,
-            ]
-        )
-    );
-
-    $wp_customize->add_setting("roach_ads_after_sidebar", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_after_sidebar", [
-        "label" => __("After content", "roach"),
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_after_sidebar_show_home", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_after_sidebar_show_home", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "label" => __("Home page", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_after_sidebar_show_cats", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_after_sidebar_show_cats", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "label" => __("Categories", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_after_sidebar_show_tags", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_after_sidebar_show_tags", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "label" => __("Tags", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_after_sidebar_show_posts", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_after_sidebar_show_posts", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "label" => __("Posts", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_after_sidebar_show_pages", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_after_sidebar_show_pages", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "label" => __("Pages", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_after_sidebar_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_after_sidebar_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_sidebar",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_after_sidebar_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control(
-            $wp_customize,
-            "roach_ads_after_sidebar_cat",
-            [
-                "section" => "roach_ads_sec_sidebar",
-                "priority" => 1,
-            ]
-        )
-    );
-
-    $wp_customize->add_setting("roach_ads_mid", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_mid", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_middle",
-        "priority" => 1,
-        "description" => __("Shortcode: [ads id=15]", "roach"),
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_mid_style", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "ads-roach-aligncenter",
-    ]);
-
-    $cats = [
-        "ads-roach-alignleft" => __("Left", "roach"),
-        "ads-roach-alignleft-wrap" => __("Left wrapped", "roach"),
-        "ads-roach-aligncenter" => __("Center", "roach"),
-        "ads-roach-alignright" => __("Right", "roach"),
-        "ads-roach-alignright-wrap" => __("Right wrapped", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_mid_style", [
-        "type" => "select",
-        "section" => "roach_ads_sec_middle",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_mid_type", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "2",
-    ]);
-
-    $cats = [
-        "1" => __("Posts / Pages", "roach"),
-        "2" => __("only posts", "roach"),
-        "3" => __("only pages", "roach"),
-        "4" => __("Use only as shortcode", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_mid_type", [
-        "type" => "select",
-        "section" => "roach_ads_sec_middle",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_mid_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_mid_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_middle",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_mid_cat", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control(
-        new roach_Dropdown_Category_Control(
-            $wp_customize,
-            "roach_ads_mid_cat",
-            [
-                "section" => "roach_ads_sec_middle",
-                "priority" => 1,
-            ]
-        )
-    );
-
-    $wp_customize->add_setting("roach_ads_mid_margin", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "absint",
-    ]);
-
-    $wp_customize->add_control("roach_ads_mid_margin", [
-        "section" => "roach_ads_sec_middle",
-        "type" => "number",
-        "priority" => 1,
-        "input_attrs" => [
-            "placeholder" => __("Margin", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_1", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_1", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_1_show_home", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_1_show_home", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Home page", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_1_show_cats", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_1_show_cats", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Categories", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_1_show_tags", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_1_show_tags", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Tags", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_1_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_loop_1_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_1_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After row 1", "roach"),
-        "2" => __("After row 2", "roach"),
-        "3" => __("After row 3", "roach"),
-        "4" => __("After row 4", "roach"),
-        "5" => __("After row 5", "roach"),
-        "6" => __("After row 6", "roach"),
-        "7" => __("After row 7", "roach"),
-        "8" => __("After row 8", "roach"),
-        "9" => __("After row 9", "roach"),
-        "10" => __("After row 10", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_loop_1_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_2", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_2", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_2_show_home", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_2_show_home", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Home page", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_2_show_cats", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_2_show_cats", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Categories", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_2_show_tags", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_2_show_tags", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Tags", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_2_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_loop_2_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_2_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After row 1", "roach"),
-        "2" => __("After row 2", "roach"),
-        "3" => __("After row 3", "roach"),
-        "4" => __("After row 4", "roach"),
-        "5" => __("After row 5", "roach"),
-        "6" => __("After row 6", "roach"),
-        "7" => __("After row 7", "roach"),
-        "8" => __("After row 8", "roach"),
-        "9" => __("After row 9", "roach"),
-        "10" => __("After row 10", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_loop_2_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_3", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_3", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_3_show_home", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_3_show_home", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Home page", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_3_show_cats", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_3_show_cats", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Categories", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_3_show_tags", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_3_show_tags", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Tags", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_3_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_loop_3_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_3_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After row 1", "roach"),
-        "2" => __("After row 2", "roach"),
-        "3" => __("After row 3", "roach"),
-        "4" => __("After row 4", "roach"),
-        "5" => __("After row 5", "roach"),
-        "6" => __("After row 6", "roach"),
-        "7" => __("After row 7", "roach"),
-        "8" => __("After row 8", "roach"),
-        "9" => __("After row 9", "roach"),
-        "10" => __("After row 10", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_loop_3_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_4", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_4", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_4_show_home", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_4_show_home", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Home page", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_4_show_cats", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_4_show_cats", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Categories", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_4_show_tags", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_4_show_tags", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Tags", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_4_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_loop_4_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_4_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After row 1", "roach"),
-        "2" => __("After row 2", "roach"),
-        "3" => __("After row 3", "roach"),
-        "4" => __("After row 4", "roach"),
-        "5" => __("After row 5", "roach"),
-        "6" => __("After row 6", "roach"),
-        "7" => __("After row 7", "roach"),
-        "8" => __("After row 8", "roach"),
-        "9" => __("After row 9", "roach"),
-        "10" => __("After row 10", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_loop_4_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_5", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_js_code",
-        "sanitize_js_callback" => "roach_escape_js_output",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_5", [
-        "label" => __("", "roach"),
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "type" => "textarea",
-        "input_attrs" => [
-            "placeholder" => __("Add your ad here", "roach"),
-        ],
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_5_show_home", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_5_show_home", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Home page", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_5_show_cats", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_5_show_cats", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Categories", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_5_show_tags", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_checkbox",
-    ]);
-
-    $wp_customize->add_control("roach_ads_loop_5_show_tags", [
-        "type" => "checkbox",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "label" => __("Tags", "roach"),
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_5_device", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("All devices", "roach"),
-        "2" => __("Desktop only", "roach"),
-        "3" => __("Mobile only", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_loop_5_device", [
-        "type" => "select",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
-
-    $wp_customize->add_setting("roach_ads_loop_5_place", [
-        "type" => "theme_mod",
-        "capability" => "edit_theme_options",
-        "sanitize_callback" => "roach_sanitize_select",
-        "default" => "1",
-    ]);
-
-    $cats = [
-        "1" => __("After row 1", "roach"),
-        "2" => __("After row 2", "roach"),
-        "3" => __("After row 3", "roach"),
-        "4" => __("After row 4", "roach"),
-        "5" => __("After row 5", "roach"),
-        "6" => __("After row 6", "roach"),
-        "7" => __("After row 7", "roach"),
-        "8" => __("After row 8", "roach"),
-        "9" => __("After row 9", "roach"),
-        "10" => __("After row 10", "roach"),
-    ];
-
-    $wp_customize->add_control("roach_ads_loop_5_place", [
-        "type" => "select",
-        "section" => "roach_ads_sec_loop",
-        "priority" => 1,
-        "choices" => $cats,
-    ]);
+    $wp_customize->add_panel('custom_options_ads', array(
+		'title' => __('Advertising and Analytics Options', 'roach') ,
+		'priority' => 120,
+		'capability' => 'edit_theme_options',
+	));
+	
+	$wp_customize->add_section('roach_ads_settings', array(
+		'title' => __('Google Analytics and others', 'roach') ,
+		'panel' => 'custom_options_ads',
+		'priority' => 1,
+		'capability' => 'edit_theme_options',
+	));
+
+	$wp_customize->add_section('roach_ads_sec_enable', array(
+		'title' => __('Enable Advertising', 'roach') ,
+		'panel' => 'custom_options_ads',
+		'priority' => 1,
+		'capability' => 'edit_theme_options',
+	));
+	
+	$wp_customize->add_section('roach_ads_sec_header', array(
+		'title' => __('Header', 'roach') ,
+		'panel' => 'custom_options_ads',
+		'priority' => 1,
+		'capability' => 'edit_theme_options',
+	));
+	
+	$wp_customize->add_section('roach_ads_sec_before', array(
+		'title' => __('Before the content', 'roach') ,
+		'panel' => 'custom_options_ads',
+		'priority' => 1,
+		'capability' => 'edit_theme_options',
+	));
+
+	$wp_customize->add_section('roach_ads_sec_middle', array(
+		'title' => __('Half of the content', 'roach') ,
+		'panel' => 'custom_options_ads',
+		'priority' => 1,
+		'capability' => 'edit_theme_options',
+	));
+	
+	$wp_customize->add_section('roach_ads_sec_after', array(
+		'title' => __('After the content', 'roach') ,
+		'panel' => 'custom_options_ads',
+		'priority' => 1,
+		'capability' => 'edit_theme_options',
+	));
+		
+	$wp_customize->add_section('roach_ads_sec_inside', array(
+		'title' => __('Inside the content', 'roach') ,
+		'panel' => 'custom_options_ads',
+		'priority' => 1,
+		'capability' => 'edit_theme_options',
+	));
+
+	$wp_customize->add_section('roach_ads_sec_sidebar', array(
+		'title' => __('On sidebar', 'roach') ,
+		'panel' => 'custom_options_ads',
+		'priority' => 1,
+		'capability' => 'edit_theme_options',
+	));
+	
+	$wp_customize->add_section('roach_ads_sec_loop', array(
+		'title' => __('On loops', 'roach') ,
+		'panel' => 'custom_options_ads',
+		'priority' => 1,
+		'capability' => 'edit_theme_options',
+	));
+	
+	$wp_customize->add_setting('roach_show_ads', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_show_ads', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_enable',
+		'priority' => 1,
+		'label' => __('Activate advertising', 'roach') ,
+	));
+	
+	$wp_customize->add_setting('roach_code_analytics', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_code_analytics', array(
+		'label' => __('Code in ‹head›', 'roach') ,
+		'description' => __('This code will be printed in the ‹head› section. Usage examples: Google Analytics, Search Console, Facebook Pixel', 'roach') ,
+		'section' => 'roach_ads_settings',
+		'priority' => 1,
+		'type' => 'textarea',
+	));
+	
+	$wp_customize->add_setting('roach_body_code', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_body_code', array(
+		'label' => __('Code in ‹body›', 'roach') ,
+		'description' => __('This code will be printed just below the opening ‹body› tag.', 'roach') ,
+		'section' => 'roach_ads_settings',
+		'priority' => 1,
+		'type' => 'textarea',
+	));
+
+	$wp_customize->add_setting('roach_footer_code', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_footer_code', array(
+		'label' => __('Code before ‹/body›', 'roach') ,
+		'description' => __('This code will be printed above the closing ‹/body› tag.', 'roach') ,
+		'section' => 'roach_ads_settings',
+		'priority' => 1,
+		'type' => 'textarea',
+	));
+	
+
+	$wp_customize->add_setting('roach_ads_1', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_1', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'type' => 'textarea',
+		'description' => __('Shortcode: [ads id=3]', 'roach') ,
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_1_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After paragraph 1', 'roach') ,
+		'2' => __('After paragraph 2', 'roach') ,
+		'3' => __('After paragraph 3', 'roach') ,
+		'4' => __('After paragraph 4', 'roach') ,
+		'5' => __('After paragraph 5', 'roach') ,
+		'6' => __('After paragraph 6', 'roach') ,
+		'7' => __('After paragraph 7', 'roach') ,
+		'8' => __('After paragraph 8', 'roach') ,
+		'9' => __('After paragraph 9', 'roach') ,
+		'10' => __('After paragraph 10', 'roach') ,
+		'11' => __('After paragraph 11', 'roach') ,
+		'12' => __('After paragraph 12', 'roach') ,
+		'13' => __('After paragraph 13', 'roach') ,
+		'14' => __('After paragraph 14', 'roach') ,
+		'15' => __('After paragraph 15', 'roach') ,
+		'16' => __('After paragraph 16', 'roach') ,
+		'17' => __('After paragraph 17', 'roach') ,
+		'18' => __('After paragraph 18', 'roach') ,
+		'19' => __('After paragraph 19', 'roach') ,
+		'20' => __('After paragraph 20', 'roach') ,
+		'0-1' => __('After first H2', 'roach') ,
+		'0-2' => __('After second H2', 'roach') ,
+		'0-3' => __('After third H2', 'roach') ,
+		'0-4' => __('After fourth H2', 'roach') ,
+		'0-5' => __('After fifth H2', 'roach') ,
+		'0-6' => __('After sixth H2', 'roach') ,
+		'0-7' => __('After seventh H2', 'roach') ,
+		'li-1' => __('After item list  1', 'roach') ,
+		'li-2' => __('After item list  2', 'roach') ,
+		'li-3' => __('After item list  3', 'roach') ,
+		'li-4' => __('After item list  4', 'roach') ,
+		'li-5' => __('After item list  5', 'roach') ,
+		'li-6' => __('After item list  6', 'roach') ,
+		'li-7' => __('After item list  7', 'roach') ,
+		'li-8' => __('After item list  8', 'roach') ,
+		'li-9' => __('After item list  9', 'roach') ,
+		'li-10' => __('After item list  10', 'roach') ,
+		'li-11' => __('After item list  11', 'roach') ,
+		'li-12' => __('After item list  12', 'roach') ,
+		'li-13' => __('After item list  13', 'roach') ,
+		'li-14' => __('After item list  14', 'roach') ,
+		'li-15' => __('After item list  15', 'roach') ,
+		'li-16' => __('After item list  16', 'roach') ,
+		'li-17' => __('After item list  17', 'roach') ,
+		'li-18' => __('After item list  18', 'roach') ,
+		'li-19' => __('After item list  19', 'roach') ,
+		'li-20' => __('After item list  20', 'roach') ,
+
+	);
+
+	$wp_customize->add_control('roach_ads_1_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_1_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_1_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_1_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('only posts', 'roach') ,
+		'3' => __('only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_1_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_1_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_1_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_1_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_1_cat', array(
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_1_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_1_margin', array(
+		'section' => 'roach_ads_sec_inside',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+
+	$wp_customize->add_setting('roach_ads_2', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_2', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'description' => __('Shortcode: [ads id=4]', 'roach') ,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_2_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After paragraph 1', 'roach') ,
+		'2' => __('After paragraph 2', 'roach') ,
+		'3' => __('After paragraph 3', 'roach') ,
+		'4' => __('After paragraph 4', 'roach') ,
+		'5' => __('After paragraph 5', 'roach') ,
+		'6' => __('After paragraph 6', 'roach') ,
+		'7' => __('After paragraph 7', 'roach') ,
+		'8' => __('After paragraph 8', 'roach') ,
+		'9' => __('After paragraph 9', 'roach') ,
+		'10' => __('After paragraph 10', 'roach') ,
+		'11' => __('After paragraph 11', 'roach') ,
+		'12' => __('After paragraph 12', 'roach') ,
+		'13' => __('After paragraph 13', 'roach') ,
+		'14' => __('After paragraph 14', 'roach') ,
+		'15' => __('After paragraph 15', 'roach') ,
+		'16' => __('After paragraph 16', 'roach') ,
+		'17' => __('After paragraph 17', 'roach') ,
+		'18' => __('After paragraph 18', 'roach') ,
+		'19' => __('After paragraph 19', 'roach') ,
+		'20' => __('After paragraph 20', 'roach') ,
+		'0-1' => __('After first H2', 'roach') ,
+		'0-2' => __('After second H2', 'roach') ,
+		'0-3' => __('After third H2', 'roach') ,
+		'0-4' => __('After fourth H2', 'roach') ,
+		'0-5' => __('After fifth H2', 'roach') ,
+		'0-6' => __('After sixth H2', 'roach') ,
+		'0-7' => __('After seventh H2', 'roach') ,
+			'li-1' => __('After item list  1', 'roach') ,
+		'li-2' => __('After item list  2', 'roach') ,
+		'li-3' => __('After item list  3', 'roach') ,
+		'li-4' => __('After item list  4', 'roach') ,
+		'li-5' => __('After item list  5', 'roach') ,
+		'li-6' => __('After item list  6', 'roach') ,
+		'li-7' => __('After item list  7', 'roach') ,
+		'li-8' => __('After item list  8', 'roach') ,
+		'li-9' => __('After item list  9', 'roach') ,
+		'li-10' => __('After item list  10', 'roach') ,
+		'li-11' => __('After item list  11', 'roach') ,
+		'li-12' => __('After item list  12', 'roach') ,
+		'li-13' => __('After item list  13', 'roach') ,
+		'li-14' => __('After item list  14', 'roach') ,
+		'li-15' => __('After item list  15', 'roach') ,
+		'li-16' => __('After item list  16', 'roach') ,
+		'li-17' => __('After item list  17', 'roach') ,
+		'li-18' => __('After item list  18', 'roach') ,
+		'li-19' => __('After item list  19', 'roach') ,
+		'li-20' => __('After item list  20', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_2_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_2_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_2_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_2_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('only posts', 'roach') ,
+		'3' => __('only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_2_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_2_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_2_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_2_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_2_cat', array(
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_2_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_2_margin', array(
+		'section' => 'roach_ads_sec_inside',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+
+	$wp_customize->add_setting('roach_ads_3', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_3', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'description' => __('Shortcode: [ads id=5]', 'roach') ,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_3_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After paragraph 1', 'roach') ,
+		'2' => __('After paragraph 2', 'roach') ,
+		'3' => __('After paragraph 3', 'roach') ,
+		'4' => __('After paragraph 4', 'roach') ,
+		'5' => __('After paragraph 5', 'roach') ,
+		'6' => __('After paragraph 6', 'roach') ,
+		'7' => __('After paragraph 7', 'roach') ,
+		'8' => __('After paragraph 8', 'roach') ,
+		'9' => __('After paragraph 9', 'roach') ,
+		'10' => __('After paragraph 10', 'roach') ,
+		'11' => __('After paragraph 11', 'roach') ,
+		'12' => __('After paragraph 12', 'roach') ,
+		'13' => __('After paragraph 13', 'roach') ,
+		'14' => __('After paragraph 14', 'roach') ,
+		'15' => __('After paragraph 15', 'roach') ,
+		'16' => __('After paragraph 16', 'roach') ,
+		'17' => __('After paragraph 17', 'roach') ,
+		'18' => __('After paragraph 18', 'roach') ,
+		'19' => __('After paragraph 19', 'roach') ,
+		'20' => __('After paragraph 20', 'roach') ,
+		'0-1' => __('After first H2', 'roach') ,
+		'0-2' => __('After second H2', 'roach') ,
+		'0-3' => __('After third H2', 'roach') ,
+		'0-4' => __('After fourth H2', 'roach') ,
+		'0-5' => __('After fifth H2', 'roach') ,
+		'0-6' => __('After sixth H2', 'roach') ,
+		'0-7' => __('After seventh H2', 'roach') ,
+		'li-1' => __('After item list  1', 'roach') ,
+		'li-2' => __('After item list  2', 'roach') ,
+		'li-3' => __('After item list  3', 'roach') ,
+		'li-4' => __('After item list  4', 'roach') ,
+		'li-5' => __('After item list  5', 'roach') ,
+		'li-6' => __('After item list  6', 'roach') ,
+		'li-7' => __('After item list  7', 'roach') ,
+		'li-8' => __('After item list  8', 'roach') ,
+		'li-9' => __('After item list  9', 'roach') ,
+		'li-10' => __('After item list  10', 'roach') ,
+		'li-11' => __('After item list  11', 'roach') ,
+		'li-12' => __('After item list  12', 'roach') ,
+		'li-13' => __('After item list  13', 'roach') ,
+		'li-14' => __('After item list  14', 'roach') ,
+		'li-15' => __('After item list  15', 'roach') ,
+		'li-16' => __('After item list  16', 'roach') ,
+		'li-17' => __('After item list  17', 'roach') ,
+		'li-18' => __('After item list  18', 'roach') ,
+		'li-19' => __('After item list  19', 'roach') ,
+		'li-20' => __('After item list  20', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_3_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_3_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_3_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_3_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('only posts', 'roach') ,
+		'3' => __('only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_3_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_3_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_3_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_3_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_3_cat', array(
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_3_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_3_margin', array(
+		'section' => 'roach_ads_sec_inside',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+
+	$wp_customize->add_setting('roach_ads_4', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_4', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'description' => __('Shortcode: [ads id=6]', 'roach') ,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_4_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After paragraph 1', 'roach') ,
+		'2' => __('After paragraph 2', 'roach') ,
+		'3' => __('After paragraph 3', 'roach') ,
+		'4' => __('After paragraph 4', 'roach') ,
+		'5' => __('After paragraph 5', 'roach') ,
+		'6' => __('After paragraph 6', 'roach') ,
+		'7' => __('After paragraph 7', 'roach') ,
+		'8' => __('After paragraph 8', 'roach') ,
+		'9' => __('After paragraph 9', 'roach') ,
+		'10' => __('After paragraph 10', 'roach') ,
+		'11' => __('After paragraph 11', 'roach') ,
+		'12' => __('After paragraph 12', 'roach') ,
+		'13' => __('After paragraph 13', 'roach') ,
+		'14' => __('After paragraph 14', 'roach') ,
+		'15' => __('After paragraph 15', 'roach') ,
+		'16' => __('After paragraph 16', 'roach') ,
+		'17' => __('After paragraph 17', 'roach') ,
+		'18' => __('After paragraph 18', 'roach') ,
+		'19' => __('After paragraph 19', 'roach') ,
+		'20' => __('After paragraph 20', 'roach') ,
+		'0-1' => __('After first H2', 'roach') ,
+		'0-2' => __('After second H2', 'roach') ,
+		'0-3' => __('After third H2', 'roach') ,
+		'0-4' => __('After fourth H2', 'roach') ,
+		'0-5' => __('After fifth H2', 'roach') ,
+		'0-6' => __('After sixth H2', 'roach') ,
+		'0-7' => __('After seventh H2', 'roach') ,
+		'li-1' => __('After item list  1', 'roach') ,
+		'li-2' => __('After item list  2', 'roach') ,
+		'li-3' => __('After item list  3', 'roach') ,
+		'li-4' => __('After item list  4', 'roach') ,
+		'li-5' => __('After item list  5', 'roach') ,
+		'li-6' => __('After item list  6', 'roach') ,
+		'li-7' => __('After item list  7', 'roach') ,
+		'li-8' => __('After item list  8', 'roach') ,
+		'li-9' => __('After item list  9', 'roach') ,
+		'li-10' => __('After item list  10', 'roach') ,
+		'li-11' => __('After item list  11', 'roach') ,
+		'li-12' => __('After item list  12', 'roach') ,
+		'li-13' => __('After item list  13', 'roach') ,
+		'li-14' => __('After item list  14', 'roach') ,
+		'li-15' => __('After item list  15', 'roach') ,
+		'li-16' => __('After item list  16', 'roach') ,
+		'li-17' => __('After item list  17', 'roach') ,
+		'li-18' => __('After item list  18', 'roach') ,
+		'li-19' => __('After item list  19', 'roach') ,
+		'li-20' => __('After item list  20', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_4_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_4_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_4_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_4_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('only posts', 'roach') ,
+		'3' => __('only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_4_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_4_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_4_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_4_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_4_cat', array(
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_4_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_4_margin', array(
+		'section' => 'roach_ads_sec_inside',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+
+	$wp_customize->add_setting('roach_ads_5', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_5', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'description' => __('Shortcode: [ads id=7]', 'roach') ,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_5_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After paragraph 1', 'roach') ,
+		'2' => __('After paragraph 2', 'roach') ,
+		'3' => __('After paragraph 3', 'roach') ,
+		'4' => __('After paragraph 4', 'roach') ,
+		'5' => __('After paragraph 5', 'roach') ,
+		'6' => __('After paragraph 6', 'roach') ,
+		'7' => __('After paragraph 7', 'roach') ,
+		'8' => __('After paragraph 8', 'roach') ,
+		'9' => __('After paragraph 9', 'roach') ,
+		'10' => __('After paragraph 10', 'roach') ,
+		'11' => __('After paragraph 11', 'roach') ,
+		'12' => __('After paragraph 12', 'roach') ,
+		'13' => __('After paragraph 13', 'roach') ,
+		'14' => __('After paragraph 14', 'roach') ,
+		'15' => __('After paragraph 15', 'roach') ,
+		'16' => __('After paragraph 16', 'roach') ,
+		'17' => __('After paragraph 17', 'roach') ,
+		'18' => __('After paragraph 18', 'roach') ,
+		'19' => __('After paragraph 19', 'roach') ,
+		'20' => __('After paragraph 20', 'roach') ,
+		'0-1' => __('After first H2', 'roach') ,
+		'0-2' => __('After second H2', 'roach') ,
+		'0-3' => __('After third H2', 'roach') ,
+		'0-4' => __('After fourth H2', 'roach') ,
+		'0-5' => __('After fifth H2', 'roach') ,
+		'0-6' => __('After sixth H2', 'roach') ,
+		'0-7' => __('After seventh H2', 'roach') ,
+		'li-1' => __('After item list  1', 'roach') ,
+		'li-2' => __('After item list  2', 'roach') ,
+		'li-3' => __('After item list  3', 'roach') ,
+		'li-4' => __('After item list  4', 'roach') ,
+		'li-5' => __('After item list  5', 'roach') ,
+		'li-6' => __('After item list  6', 'roach') ,
+		'li-7' => __('After item list  7', 'roach') ,
+		'li-8' => __('After item list  8', 'roach') ,
+		'li-9' => __('After item list  9', 'roach') ,
+		'li-10' => __('After item list  10', 'roach') ,
+		'li-11' => __('After item list  11', 'roach') ,
+		'li-12' => __('After item list  12', 'roach') ,
+		'li-13' => __('After item list  13', 'roach') ,
+		'li-14' => __('After item list  14', 'roach') ,
+		'li-15' => __('After item list  15', 'roach') ,
+		'li-16' => __('After item list  16', 'roach') ,
+		'li-17' => __('After item list  17', 'roach') ,
+		'li-18' => __('After item list  18', 'roach') ,
+		'li-19' => __('After item list  19', 'roach') ,
+		'li-20' => __('After item list  20', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_5_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_5_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+
+	);
+
+	$wp_customize->add_control('roach_ads_5_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_5_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('only posts', 'roach') ,
+		'3' => __('only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_5_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_5_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_5_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_5_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_5_cat', array(
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_5_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_5_margin', array(
+		'section' => 'roach_ads_sec_inside',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+
+	$wp_customize->add_setting('roach_ads_6', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_6', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'description' => __('Shortcode: [ads id=8]', 'roach') ,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_6_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After paragraph 1', 'roach') ,
+		'2' => __('After paragraph 2', 'roach') ,
+		'3' => __('After paragraph 3', 'roach') ,
+		'4' => __('After paragraph 4', 'roach') ,
+		'5' => __('After paragraph 5', 'roach') ,
+		'6' => __('After paragraph 6', 'roach') ,
+		'7' => __('After paragraph 7', 'roach') ,
+		'8' => __('After paragraph 8', 'roach') ,
+		'9' => __('After paragraph 9', 'roach') ,
+		'10' => __('After paragraph 10', 'roach') ,
+		'11' => __('After paragraph 11', 'roach') ,
+		'12' => __('After paragraph 12', 'roach') ,
+		'13' => __('After paragraph 13', 'roach') ,
+		'14' => __('After paragraph 14', 'roach') ,
+		'15' => __('After paragraph 15', 'roach') ,
+		'16' => __('After paragraph 16', 'roach') ,
+		'17' => __('After paragraph 17', 'roach') ,
+		'18' => __('After paragraph 18', 'roach') ,
+		'19' => __('After paragraph 19', 'roach') ,
+		'20' => __('After paragraph 20', 'roach') ,
+		'0-1' => __('After first H2', 'roach') ,
+		'0-2' => __('After second H2', 'roach') ,
+		'0-3' => __('After third H2', 'roach') ,
+		'0-4' => __('After fourth H2', 'roach') ,
+		'0-5' => __('After fifth H2', 'roach') ,
+		'0-6' => __('After sixth H2', 'roach') ,
+		'0-7' => __('After seventh H2', 'roach') ,
+		'li-1' => __('After item list  1', 'roach') ,
+		'li-2' => __('After item list  2', 'roach') ,
+		'li-3' => __('After item list  3', 'roach') ,
+		'li-4' => __('After item list  4', 'roach') ,
+		'li-5' => __('After item list  5', 'roach') ,
+		'li-6' => __('After item list  6', 'roach') ,
+		'li-7' => __('After item list  7', 'roach') ,
+		'li-8' => __('After item list  8', 'roach') ,
+		'li-9' => __('After item list  9', 'roach') ,
+		'li-10' => __('After item list  10', 'roach') ,
+		'li-11' => __('After item list  11', 'roach') ,
+		'li-12' => __('After item list  12', 'roach') ,
+		'li-13' => __('After item list  13', 'roach') ,
+		'li-14' => __('After item list  14', 'roach') ,
+		'li-15' => __('After item list  15', 'roach') ,
+		'li-16' => __('After item list  16', 'roach') ,
+		'li-17' => __('After item list  17', 'roach') ,
+		'li-18' => __('After item list  18', 'roach') ,
+		'li-19' => __('After item list  19', 'roach') ,
+		'li-20' => __('After item list  20', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_6_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_6_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+
+	);
+
+	$wp_customize->add_control('roach_ads_6_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_6_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('only posts', 'roach') ,
+		'3' => __('only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_6_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_6_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_6_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_6_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_6_cat', array(
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_6_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_6_margin', array(
+		'section' => 'roach_ads_sec_inside',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+
+	$wp_customize->add_setting('roach_ads_7', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_7', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'description' => __('Shortcode: [ads id=9]', 'roach') ,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_7_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After paragraph 1', 'roach') ,
+		'2' => __('After paragraph 2', 'roach') ,
+		'3' => __('After paragraph 3', 'roach') ,
+		'4' => __('After paragraph 4', 'roach') ,
+		'5' => __('After paragraph 5', 'roach') ,
+		'6' => __('After paragraph 6', 'roach') ,
+		'7' => __('After paragraph 7', 'roach') ,
+		'8' => __('After paragraph 8', 'roach') ,
+		'9' => __('After paragraph 9', 'roach') ,
+		'10' => __('After paragraph 10', 'roach') ,
+		'11' => __('After paragraph 11', 'roach') ,
+		'12' => __('After paragraph 12', 'roach') ,
+		'13' => __('After paragraph 13', 'roach') ,
+		'14' => __('After paragraph 14', 'roach') ,
+		'15' => __('After paragraph 15', 'roach') ,
+		'16' => __('After paragraph 16', 'roach') ,
+		'17' => __('After paragraph 17', 'roach') ,
+		'18' => __('After paragraph 18', 'roach') ,
+		'19' => __('After paragraph 19', 'roach') ,
+		'20' => __('After paragraph 20', 'roach') ,
+		'0-1' => __('After first H2', 'roach') ,
+		'0-2' => __('After second H2', 'roach') ,
+		'0-3' => __('After third H2', 'roach') ,
+		'0-4' => __('After fourth H2', 'roach') ,
+		'0-5' => __('After fifth H2', 'roach') ,
+		'0-6' => __('After sixth H2', 'roach') ,
+		'0-7' => __('After seventh H2', 'roach') ,		
+		'li-1' => __('After item list  1', 'roach') ,
+		'li-2' => __('After item list  2', 'roach') ,
+		'li-3' => __('After item list  3', 'roach') ,
+		'li-4' => __('After item list  4', 'roach') ,
+		'li-5' => __('After item list  5', 'roach') ,
+		'li-6' => __('After item list  6', 'roach') ,
+		'li-7' => __('After item list  7', 'roach') ,
+		'li-8' => __('After item list  8', 'roach') ,
+		'li-9' => __('After item list  9', 'roach') ,
+		'li-10' => __('After item list  10', 'roach') ,
+		'li-11' => __('After item list  11', 'roach') ,
+		'li-12' => __('After item list  12', 'roach') ,
+		'li-13' => __('After item list  13', 'roach') ,
+		'li-14' => __('After item list  14', 'roach') ,
+		'li-15' => __('After item list  15', 'roach') ,
+		'li-16' => __('After item list  16', 'roach') ,
+		'li-17' => __('After item list  17', 'roach') ,
+		'li-18' => __('After item list  18', 'roach') ,
+		'li-19' => __('After item list  19', 'roach') ,
+		'li-20' => __('After item list  20', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_7_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_7_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+
+	);
+
+	$wp_customize->add_control('roach_ads_7_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_7_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('only posts', 'roach') ,
+		'3' => __('only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_7_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_7_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_7_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_7_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_7_cat', array(
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_7_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_7_margin', array(
+		'section' => 'roach_ads_sec_inside',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+
+	$wp_customize->add_setting('roach_ads_8', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_8', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'description' => __('Shortcode: [ads id=10]', 'roach') ,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_8_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After paragraph 1', 'roach') ,
+		'2' => __('After paragraph 2', 'roach') ,
+		'3' => __('After paragraph 3', 'roach') ,
+		'4' => __('After paragraph 4', 'roach') ,
+		'5' => __('After paragraph 5', 'roach') ,
+		'6' => __('After paragraph 6', 'roach') ,
+		'7' => __('After paragraph 7', 'roach') ,
+		'8' => __('After paragraph 8', 'roach') ,
+		'9' => __('After paragraph 9', 'roach') ,
+		'10' => __('After paragraph 10', 'roach') ,
+		'11' => __('After paragraph 11', 'roach') ,
+		'12' => __('After paragraph 12', 'roach') ,
+		'13' => __('After paragraph 13', 'roach') ,
+		'14' => __('After paragraph 14', 'roach') ,
+		'15' => __('After paragraph 15', 'roach') ,
+		'16' => __('After paragraph 16', 'roach') ,
+		'17' => __('After paragraph 17', 'roach') ,
+		'18' => __('After paragraph 18', 'roach') ,
+		'19' => __('After paragraph 19', 'roach') ,
+		'20' => __('After paragraph 20', 'roach') ,
+		'0-1' => __('After first H2', 'roach') ,
+		'0-2' => __('After second H2', 'roach') ,
+		'0-3' => __('After third H2', 'roach') ,
+		'0-4' => __('After fourth H2', 'roach') ,
+		'0-5' => __('After fifth H2', 'roach') ,
+		'0-6' => __('After sixth H2', 'roach') ,
+		'0-7' => __('After seventh H2', 'roach') ,
+		'li-1' => __('After item list  1', 'roach') ,
+		'li-2' => __('After item list  2', 'roach') ,
+		'li-3' => __('After item list  3', 'roach') ,
+		'li-4' => __('After item list  4', 'roach') ,
+		'li-5' => __('After item list  5', 'roach') ,
+		'li-6' => __('After item list  6', 'roach') ,
+		'li-7' => __('After item list  7', 'roach') ,
+		'li-8' => __('After item list  8', 'roach') ,
+		'li-9' => __('After item list  9', 'roach') ,
+		'li-10' => __('After item list  10', 'roach') ,
+		'li-11' => __('After item list  11', 'roach') ,
+		'li-12' => __('After item list  12', 'roach') ,
+		'li-13' => __('After item list  13', 'roach') ,
+		'li-14' => __('After item list  14', 'roach') ,
+		'li-15' => __('After item list  15', 'roach') ,
+		'li-16' => __('After item list  16', 'roach') ,
+		'li-17' => __('After item list  17', 'roach') ,
+		'li-18' => __('After item list  18', 'roach') ,
+		'li-19' => __('After item list  19', 'roach') ,
+		'li-20' => __('After item list  20', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_8_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_8_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+
+	);
+
+	$wp_customize->add_control('roach_ads_8_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_8_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('only posts', 'roach') ,
+		'3' => __('only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_8_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_8_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_8_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_8_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_8_cat', array(
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_8_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_8_margin', array(
+		'section' => 'roach_ads_sec_inside',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+
+	$wp_customize->add_setting('roach_ads_9', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_9', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'description' => __('Shortcode: [ads id=11]', 'roach') ,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_9_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After paragraph 1', 'roach') ,
+		'2' => __('After paragraph 2', 'roach') ,
+		'3' => __('After paragraph 3', 'roach') ,
+		'4' => __('After paragraph 4', 'roach') ,
+		'5' => __('After paragraph 5', 'roach') ,
+		'6' => __('After paragraph 6', 'roach') ,
+		'7' => __('After paragraph 7', 'roach') ,
+		'8' => __('After paragraph 8', 'roach') ,
+		'9' => __('After paragraph 9', 'roach') ,
+		'10' => __('After paragraph 10', 'roach') ,
+		'11' => __('After paragraph 11', 'roach') ,
+		'12' => __('After paragraph 12', 'roach') ,
+		'13' => __('After paragraph 13', 'roach') ,
+		'14' => __('After paragraph 14', 'roach') ,
+		'15' => __('After paragraph 15', 'roach') ,
+		'16' => __('After paragraph 16', 'roach') ,
+		'17' => __('After paragraph 17', 'roach') ,
+		'18' => __('After paragraph 18', 'roach') ,
+		'19' => __('After paragraph 19', 'roach') ,
+		'20' => __('After paragraph 20', 'roach') ,
+		'0-1' => __('After first H2', 'roach') ,
+		'0-2' => __('After second H2', 'roach') ,
+		'0-3' => __('After third H2', 'roach') ,
+		'0-4' => __('After fourth H2', 'roach') ,
+		'0-5' => __('After fifth H2', 'roach') ,
+		'0-6' => __('After sixth H2', 'roach') ,
+		'0-7' => __('After seventh H2', 'roach') ,
+		'li-1' => __('After item list  1', 'roach') ,
+		'li-2' => __('After item list  2', 'roach') ,
+		'li-3' => __('After item list  3', 'roach') ,
+		'li-4' => __('After item list  4', 'roach') ,
+		'li-5' => __('After item list  5', 'roach') ,
+		'li-6' => __('After item list  6', 'roach') ,
+		'li-7' => __('After item list  7', 'roach') ,
+		'li-8' => __('After item list  8', 'roach') ,
+		'li-9' => __('After item list  9', 'roach') ,
+		'li-10' => __('After item list  10', 'roach') ,
+		'li-11' => __('After item list  11', 'roach') ,
+		'li-12' => __('After item list  12', 'roach') ,
+		'li-13' => __('After item list  13', 'roach') ,
+		'li-14' => __('After item list  14', 'roach') ,
+		'li-15' => __('After item list  15', 'roach') ,
+		'li-16' => __('After item list  16', 'roach') ,
+		'li-17' => __('After item list  17', 'roach') ,
+		'li-18' => __('After item list  18', 'roach') ,
+		'li-19' => __('After item list  19', 'roach') ,
+		'li-20' => __('After item list  20', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_9_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_9_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+
+	);
+
+	$wp_customize->add_control('roach_ads_9_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_9_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('only posts', 'roach') ,
+		'3' => __('only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_9_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_9_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_9_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_9_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_9_cat', array(
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_9_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_9_margin', array(
+		'section' => 'roach_ads_sec_inside',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+
+	$wp_customize->add_setting('roach_ads_10', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_10', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'description' => __('Shortcode: [ads id=12]', 'roach') ,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_10_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After paragraph 1', 'roach') ,
+		'2' => __('After paragraph 2', 'roach') ,
+		'3' => __('After paragraph 3', 'roach') ,
+		'4' => __('After paragraph 4', 'roach') ,
+		'5' => __('After paragraph 5', 'roach') ,
+		'6' => __('After paragraph 6', 'roach') ,
+		'7' => __('After paragraph 7', 'roach') ,
+		'8' => __('After paragraph 8', 'roach') ,
+		'9' => __('After paragraph 9', 'roach') ,
+		'10' => __('After paragraph 10', 'roach') ,
+		'11' => __('After paragraph 11', 'roach') ,
+		'12' => __('After paragraph 12', 'roach') ,
+		'13' => __('After paragraph 13', 'roach') ,
+		'14' => __('After paragraph 14', 'roach') ,
+		'15' => __('After paragraph 15', 'roach') ,
+		'16' => __('After paragraph 16', 'roach') ,
+		'17' => __('After paragraph 17', 'roach') ,
+		'18' => __('After paragraph 18', 'roach') ,
+		'19' => __('After paragraph 19', 'roach') ,
+		'20' => __('After paragraph 20', 'roach') ,
+		'0-1' => __('After first H2', 'roach') ,
+		'0-2' => __('After second H2', 'roach') ,
+		'0-3' => __('After third H2', 'roach') ,
+		'0-4' => __('After fourth H2', 'roach') ,
+		'0-5' => __('After fifth H2', 'roach') ,
+		'0-6' => __('After sixth H2', 'roach') ,
+		'0-7' => __('After seventh H2', 'roach') ,
+		'li-1' => __('After item list  1', 'roach') ,
+		'li-2' => __('After item list  2', 'roach') ,
+		'li-3' => __('After item list  3', 'roach') ,
+		'li-4' => __('After item list  4', 'roach') ,
+		'li-5' => __('After item list  5', 'roach') ,
+		'li-6' => __('After item list  6', 'roach') ,
+		'li-7' => __('After item list  7', 'roach') ,
+		'li-8' => __('After item list  8', 'roach') ,
+		'li-9' => __('After item list  9', 'roach') ,
+		'li-10' => __('After item list  10', 'roach') ,
+		'li-11' => __('After item list  11', 'roach') ,
+		'li-12' => __('After item list  12', 'roach') ,
+		'li-13' => __('After item list  13', 'roach') ,
+		'li-14' => __('After item list  14', 'roach') ,
+		'li-15' => __('After item list  15', 'roach') ,
+		'li-16' => __('After item list  16', 'roach') ,
+		'li-17' => __('After item list  17', 'roach') ,
+		'li-18' => __('After item list  18', 'roach') ,
+		'li-19' => __('After item list  19', 'roach') ,
+		'li-20' => __('After item list  20', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_10_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_10_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+
+	);
+
+	$wp_customize->add_control('roach_ads_10_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_10_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('only posts', 'roach') ,
+		'3' => __('only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_10_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_10_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_10_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_10_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_10_cat', array(
+		'section' => 'roach_ads_sec_inside',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_10_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_10_margin', array(
+		'section' => 'roach_ads_sec_inside',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+	
+	
+	$wp_customize->add_setting('roach_ads_before_image', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_before_image', array(
+		'label' => __('Before featured image', 'roach') ,
+		'section' => 'roach_ads_sec_before',
+		'description' => __('Shortcode: [ads id=16]', 'roach') ,
+		'priority' => 1,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_before_image_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+
+	);
+
+	$wp_customize->add_control('roach_ads_before_image_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_before',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_before_image_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('Only posts', 'roach') ,
+		'3' => __('Only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_before_image_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_before',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_before_image_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_before_image_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_before',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_before_image_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_before_image_cat', array(
+		'section' => 'roach_ads_sec_before',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_before_image_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_before_image_margin', array(
+		'section' => 'roach_ads_sec_before',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+
+	$wp_customize->add_setting('roach_ads_before', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_before', array(
+		'label' => __('After featured image', 'roach') ,
+		'section' => 'roach_ads_sec_before',
+		'description' => __('Shortcode: [ads id=1]', 'roach') ,
+		'priority' => 1,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_before_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+
+	);
+
+	$wp_customize->add_control('roach_ads_before_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_before',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_before_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('Only posts', 'roach') ,
+		'3' => __('Only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_before_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_before',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_before_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_before_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_before',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_before_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_before_cat', array(
+		'section' => 'roach_ads_sec_before',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_before_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_before_margin', array(
+		'section' => 'roach_ads_sec_before',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+	
+	
+	
+	
+	$wp_customize->add_setting('roach_ads_after', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_after', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_after',
+		'priority' => 1,
+		'description' => __('Shortcode: [ads id=2]', 'roach') ,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_after_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+
+	);
+
+	$wp_customize->add_control('roach_ads_after_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_after',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_after_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('Only posts', 'roach') ,
+		'3' => __('Only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_after_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_after',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_after_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_after_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_after',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_after_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_after_cat', array(
+		'section' => 'roach_ads_sec_after',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_after_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_after_margin', array(
+		'section' => 'roach_ads_sec_after',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+	
+
+	$wp_customize->add_setting('roach_ads_header', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_header', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_header',
+		'description' => __('Shortcode: [ads id=0]', 'roach') ,
+		'priority' => 1,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_header_show_home', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_header_show_home', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_header',
+		'priority' => 1,
+		'label' => __('Home page', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_header_show_cats', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_header_show_cats', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_header',
+		'priority' => 1,
+		'label' => __('Categories', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_header_show_tags', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_header_show_tags', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_header',
+		'priority' => 1,
+		'label' => __('Tags', 'roach') ,
+	));	
+	
+	$wp_customize->add_setting('roach_ads_header_show_posts', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_header_show_posts', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_header',
+		'priority' => 1,
+		'label' => __('Posts', 'roach') ,
+	));
+	
+	$wp_customize->add_setting('roach_ads_header_show_pages', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_header_show_pages', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_header',
+		'priority' => 1,
+		'label' => __('Pages', 'roach') ,
+	));
+	
+	$wp_customize->add_setting('roach_ads_header_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_header_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_header',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_header_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_header_cat', array(
+		'section' => 'roach_ads_sec_header',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_header_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_header_margin', array(
+		'section' => 'roach_ads_sec_header',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+
+	$wp_customize->add_setting('roach_ads_before_sidebar', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_before_sidebar', array(
+		'label' => __('Before content', 'roach') ,
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_before_sidebar_show_home', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_before_sidebar_show_home', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'label' => __('Home page', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_before_sidebar_show_cats', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_before_sidebar_show_cats', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'label' => __('Categories', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_before_sidebar_show_tags', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_before_sidebar_show_tags', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'label' => __('Tags', 'roach') ,
+	));	
+	
+	$wp_customize->add_setting('roach_ads_before_sidebar_show_posts', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_before_sidebar_show_posts', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'label' => __('Posts', 'roach') ,
+	));
+	
+	$wp_customize->add_setting('roach_ads_before_sidebar_show_pages', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_before_sidebar_show_pages', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'label' => __('Pages', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_before_sidebar_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_before_sidebar_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_before_sidebar_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_before_sidebar_cat', array(
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_after_sidebar', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_after_sidebar', array(
+		'label' => __('After content', 'roach') ,
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_after_sidebar_show_home', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_after_sidebar_show_home', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'label' => __('Home page', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_after_sidebar_show_cats', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_after_sidebar_show_cats', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'label' => __('Categories', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_after_sidebar_show_tags', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_after_sidebar_show_tags', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'label' => __('Tags', 'roach') ,
+	));	
+	
+	$wp_customize->add_setting('roach_ads_after_sidebar_show_posts', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_after_sidebar_show_posts', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'label' => __('Posts', 'roach') ,
+	));
+	
+	$wp_customize->add_setting('roach_ads_after_sidebar_show_pages', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_after_sidebar_show_pages', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'label' => __('Pages', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_after_sidebar_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_after_sidebar_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_after_sidebar_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_after_sidebar_cat', array(
+		'section' => 'roach_ads_sec_sidebar',
+		'priority' => 1,
+	)));
+	
+
+	$wp_customize->add_setting('roach_ads_mid', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));
+
+	$wp_customize->add_control('roach_ads_mid', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_middle',
+		'priority' => 1,
+		'description' => __('Shortcode: [ads id=15]', 'roach') ,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_mid_style', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => 'ads-roach-aligncenter',
+	));
+
+	$cats = array(
+		'ads-roach-alignleft' => __('Left', 'roach') ,
+		'ads-roach-alignleft-wrap' => __('Left wrapped', 'roach') ,
+		'ads-roach-aligncenter' => __('Center', 'roach') ,
+		'ads-roach-alignright' => __('Right', 'roach') ,
+		'ads-roach-alignright-wrap' => __('Right wrapped', 'roach') ,
+
+	);
+
+	$wp_customize->add_control('roach_ads_mid_style', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_middle',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_mid_type', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '2',
+	));
+
+	$cats = array(
+		'1' => __('Posts / Pages', 'roach') ,
+		'2' => __('only posts', 'roach') ,
+		'3' => __('only pages', 'roach') ,
+		'4' => __('Use only as shortcode', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_mid_type', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_middle',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_mid_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_mid_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_middle',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	$wp_customize->add_setting('roach_ads_mid_cat', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new roach_Dropdown_Category_Control($wp_customize, 'roach_ads_mid_cat', array(
+		'section' => 'roach_ads_sec_middle',
+		'priority' => 1,
+	)));
+
+	$wp_customize->add_setting('roach_ads_mid_margin', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control('roach_ads_mid_margin', array(
+		'section' => 'roach_ads_sec_middle',
+		'type' => 'number',
+		'priority' => 1,
+		'input_attrs' => array(
+			'placeholder' => __('Margin', 'roach') ,
+		)
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_1', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));	
+	
+	$wp_customize->add_control('roach_ads_loop_1', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+	
+	$wp_customize->add_setting('roach_ads_loop_1_show_home', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_1_show_home', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Home page', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_1_show_cats', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_1_show_cats', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Categories', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_1_show_tags', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_1_show_tags', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Tags', 'roach') ,
+	));	
+	
+	$wp_customize->add_setting('roach_ads_loop_1_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_loop_1_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	
+	$wp_customize->add_setting('roach_ads_loop_1_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After row 1', 'roach') ,
+		'2' => __('After row 2', 'roach') ,
+		'3' => __('After row 3', 'roach') ,
+		'4' => __('After row 4', 'roach') ,
+		'5' => __('After row 5', 'roach') ,
+		'6' => __('After row 6', 'roach') ,
+		'7' => __('After row 7', 'roach') ,
+		'8' => __('After row 8', 'roach') ,
+		'9' => __('After row 9', 'roach') ,
+		'10' => __('After row 10', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_loop_1_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'choices' => $cats
+	));
+	
+	$wp_customize->add_setting('roach_ads_loop_2', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));	
+	
+	$wp_customize->add_control('roach_ads_loop_2', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_2_show_home', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_2_show_home', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Home page', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_2_show_cats', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_2_show_cats', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Categories', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_2_show_tags', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_2_show_tags', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Tags', 'roach') ,
+	));	
+
+	$wp_customize->add_setting('roach_ads_loop_2_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_loop_2_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	
+	$wp_customize->add_setting('roach_ads_loop_2_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After row 1', 'roach') ,
+		'2' => __('After row 2', 'roach') ,
+		'3' => __('After row 3', 'roach') ,
+		'4' => __('After row 4', 'roach') ,
+		'5' => __('After row 5', 'roach') ,
+		'6' => __('After row 6', 'roach') ,
+		'7' => __('After row 7', 'roach') ,
+		'8' => __('After row 8', 'roach') ,
+		'9' => __('After row 9', 'roach') ,
+		'10' => __('After row 10', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_loop_2_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'choices' => $cats
+	));
+	
+	$wp_customize->add_setting('roach_ads_loop_3', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));	
+	
+	$wp_customize->add_control('roach_ads_loop_3', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_3_show_home', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_3_show_home', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Home page', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_3_show_cats', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_3_show_cats', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Categories', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_3_show_tags', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_3_show_tags', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Tags', 'roach') ,
+	));	
+
+	$wp_customize->add_setting('roach_ads_loop_3_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_loop_3_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	
+	$wp_customize->add_setting('roach_ads_loop_3_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After row 1', 'roach') ,
+		'2' => __('After row 2', 'roach') ,
+		'3' => __('After row 3', 'roach') ,
+		'4' => __('After row 4', 'roach') ,
+		'5' => __('After row 5', 'roach') ,
+		'6' => __('After row 6', 'roach') ,
+		'7' => __('After row 7', 'roach') ,
+		'8' => __('After row 8', 'roach') ,
+		'9' => __('After row 9', 'roach') ,
+		'10' => __('After row 10', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_loop_3_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'choices' => $cats
+	));
+	
+	$wp_customize->add_setting('roach_ads_loop_4', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));	
+	
+	$wp_customize->add_control('roach_ads_loop_4', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_4_show_home', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_4_show_home', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Home page', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_4_show_cats', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_4_show_cats', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Categories', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_4_show_tags', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_4_show_tags', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Tags', 'roach') ,
+	));	
+
+	$wp_customize->add_setting('roach_ads_loop_4_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_loop_4_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	
+	$wp_customize->add_setting('roach_ads_loop_4_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After row 1', 'roach') ,
+		'2' => __('After row 2', 'roach') ,
+		'3' => __('After row 3', 'roach') ,
+		'4' => __('After row 4', 'roach') ,
+		'5' => __('After row 5', 'roach') ,
+		'6' => __('After row 6', 'roach') ,
+		'7' => __('After row 7', 'roach') ,
+		'8' => __('After row 8', 'roach') ,
+		'9' => __('After row 9', 'roach') ,
+		'10' => __('After row 10', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_loop_4_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'choices' => $cats
+	));
+	
+$wp_customize->add_setting('roach_ads_loop_5', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'roach_sanitize_js_code',
+		'sanitize_js_callback' => 'roach_escape_js_output',
+	));	
+	
+	$wp_customize->add_control('roach_ads_loop_5', array(
+		'label' => __('', 'roach') ,
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'type' => 'textarea',
+		'input_attrs' => array(
+			'placeholder' => __( 'Add your ad here', 'roach' ),
+		),
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_5_show_home', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_5_show_home', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Home page', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_5_show_cats', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_5_show_cats', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Categories', 'roach') ,
+	));
+
+	$wp_customize->add_setting('roach_ads_loop_5_show_tags', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control('roach_ads_loop_5_show_tags', array(
+		'type' => 'checkbox',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'label' => __('Tags', 'roach') ,
+	));	
+
+	$wp_customize->add_setting('roach_ads_loop_5_device', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('All devices', 'roach') ,
+		'2' => __('Desktop only', 'roach') ,
+		'3' => __('Mobile only', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_loop_5_device', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'choices' => $cats
+	));
+
+	
+	$wp_customize->add_setting('roach_ads_loop_5_place', array(
+		'type'      => 'theme_mod',
+		'capability'      => 'edit_theme_options',
+		'sanitize_callback'      => 'roach_sanitize_select',
+		'default'      => '1',
+	));
+
+	$cats = array(
+		'1' => __('After row 1', 'roach') ,
+		'2' => __('After row 2', 'roach') ,
+		'3' => __('After row 3', 'roach') ,
+		'4' => __('After row 4', 'roach') ,
+		'5' => __('After row 5', 'roach') ,
+		'6' => __('After row 6', 'roach') ,
+		'7' => __('After row 7', 'roach') ,
+		'8' => __('After row 8', 'roach') ,
+		'9' => __('After row 9', 'roach') ,
+		'10' => __('After row 10', 'roach') ,
+	);
+
+	$wp_customize->add_control('roach_ads_loop_5_place', array(
+		'type' => 'select',
+		'section' => 'roach_ads_sec_loop',
+		'priority' => 1,
+		'choices' => $cats
+	));
 
     /*
      * Sections
